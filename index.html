@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lara Hijab | اللمسة الذهبية الفاخرة</title>
+    <title>Lara Hijab | فخامة لا مثيل لها</title>
     
     <script src="https://cdn.tailwindcss.com"></script>
     
@@ -11,291 +11,260 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&family=El+Messiri:wght@400;500;600;700&display=swap" rel="stylesheet">
 
     <style>
-        /* تعريف الألوان الذهبية المتدرجة */
+        /* تعريف الألوان المتدرجة الجديدة */
         :root {
-            --gold-light: #FFD700;
-            --gold-mid: #DAA520;
-            --gold-dark: #B8860B;
-            --shadow-gold: rgba(255, 215, 0, 0.7);
-            --bg-dark: #0A0A0A;
-            --text-light: #F0F0F0;
+            --primary-gold: #F0C42F;
+            --secondary-gold: #E5B40F;
+            --dark-gold: #A18020;
+            --bg-dark: #070707;
+            --bg-accent: #111111;
+            --card-border: rgba(240, 196, 47, 0.4);
         }
 
         body {
             font-family: 'Tajawal', sans-serif;
             background-color: var(--bg-dark);
-            color: var(--text-light);
+            color: #EAEAEA;
             overflow-x: hidden;
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: flex-start;
             min-height: 100vh;
             position: relative;
         }
 
-        /* الخلفية المتوهجة بنقوش إسلامية ذهبية */
-        .islamic-pattern-bg {
+        /* خلفية متدرجة مع نقوش ذهبية متحركة */
+        .golden-gradient-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at top, var(--bg-dark) 0%, transparent 60%), radial-gradient(circle at bottom, var(--bg-dark) 0%, transparent 60%);
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .golden-pattern {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            pointer-events: none;
-            overflow: hidden;
-            z-index: 0;
+            opacity: 0.03;
+            background-image: url('data:image/svg+xml,%3Csvg width="100%" height="100%" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"%3E%3Cdefs%3E%3Cpattern id="goldenPattern" x="0" y="0" width="10" height="10" patternUnits="userSpaceOnUse"%3E%3Ccircle cx="5" cy="5" r="2" fill="%23F0C42F"/%3E%3C/pattern%3E%3C/defs%3E%3Crect x="0" y="0" width="100%" height="100%" fill="url(%23goldenPattern)"/%3E%3C/svg%3E');
+            animation: move-pattern 45s linear infinite;
         }
 
-        .islamic-pattern-bg::before {
-            content: '';
-            position: absolute;
-            width: 180%;
-            height: 180%;
-            top: -40%;
-            left: -40%;
-            background-image: url('data:image/svg+xml,%3Csvg width="100%" height="100%" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"%3E%3Cdefs%3E%3Cpattern id="islamicPattern" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse"%3E%3Cpath d="M10 0 L10 20 M0 10 L20 10" stroke="%23B8860B" stroke-width="0.2"/%3E%3Cpath d="M0 0 L20 20 M20 0 L0 20" stroke="%23DAA520" stroke-width="0.08"/%3E%3C/pattern%3E%3C/defs%3E%3Crect x="0" y="0" width="100%" height="100%" fill="url(%23islamicPattern)"/%3E%3C/svg%3E');
-            opacity: 0.04;
-            transform-origin: center center;
-            animation: rotate-pattern 80s linear infinite, pulse-opacity 12s ease-in-out infinite alternate;
+        @keyframes move-pattern {
+            from { transform: translate(0, 0); }
+            to { transform: translate(100px, 100px); }
         }
 
-        @keyframes rotate-pattern {
-            from { transform: rotate(0deg) scale(1.1); }
-            to { transform: rotate(360deg) scale(1.1); }
-        }
-        @keyframes pulse-opacity {
-            0% { opacity: 0.02; }
-            50% { opacity: 0.06; }
-            100% { opacity: 0.02; }
-        }
-
-        /* اللوغو كعلامة مائية في الخلفية */
+        /* اللوجو كعلامة مائية في الخلفية */
         .watermark-logo {
-            position: absolute;
+            position: fixed;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%) rotate(-15deg);
-            width: 80vmin;
-            opacity: 0.015;
+            width: 90vmin;
+            opacity: 0.01;
             pointer-events: none;
-            filter: grayscale(100%) brightness(50%);
-            animation: watermark-fade 25s ease-in-out infinite alternate;
+            filter: grayscale(100%) brightness(30%);
+            animation: watermark-fade 30s ease-in-out infinite alternate;
         }
         @keyframes watermark-fade {
-            0% { opacity: 0.01; transform: translate(-50%, -50%) rotate(-10deg) scale(0.97); }
-            100% { opacity: 0.02; transform: translate(-50%, -50%) rotate(-20deg) scale(1.03); }
+            0% { opacity: 0.008; transform: translate(-50%, -50%) rotate(-10deg) scale(0.95); }
+            100% { opacity: 0.012; transform: translate(-50%, -50%) rotate(-20deg) scale(1.05); }
         }
 
         /* حاوية المحتوى الرئيسية */
         .main-container {
             width: 100%;
-            max-width: 600px;
+            max-width: 650px;
             padding: 2rem 1rem;
             position: relative;
             z-index: 10;
         }
 
-        /* اللوغو الدائري المتوهج */
-        .circular-logo-container {
+        /* اللوغو الرئيسي - تصميم جديد */
+        .profile-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            margin-bottom: 3.5rem;
+            animation: slide-down 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+            opacity: 0;
+        }
+        .profile-image-frame {
             position: relative;
             width: 200px;
             height: 200px;
-            margin: 2rem auto 4rem auto;
             border-radius: 50%;
+            background: radial-gradient(circle, rgba(240, 196, 47, 0.4) 0%, transparent 70%);
+            box-shadow: 0 0 60px rgba(240, 196, 47, 0.6), inset 0 0 30px rgba(240, 196, 47, 0.5);
+            animation: pulse-border 4s ease-in-out infinite alternate;
             display: flex;
             align-items: center;
             justify-content: center;
-            background: radial-gradient(circle, rgba(255, 215, 0, 0.5) 0%, transparent 75%);
-            box-shadow: 0 0 50px var(--shadow-gold), inset 0 0 25px var(--shadow-gold);
-            animation: pulse-border 3.5s ease-in-out infinite alternate;
             overflow: hidden;
         }
-        .circular-logo-container img {
-            width: 70%;
-            height: 70%;
+        .profile-image-frame img {
+            width: 80%;
+            height: 80%;
             object-fit: contain;
             border-radius: 50%;
-            filter: drop-shadow(0 0 20px var(--gold-light)) drop-shadow(0 0 10px var(--gold-mid));
-            animation: float-logo 4.5s ease-in-out infinite;
+            filter: drop-shadow(0 0 25px var(--primary-gold));
+            animation: float-logo 5s ease-in-out infinite;
+        }
+
+        @keyframes slide-down {
+            from { transform: translateY(-50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
         }
 
         @keyframes pulse-border {
-            0% { box-shadow: 0 0 40px var(--shadow-gold), inset 0 0 20px var(--shadow-gold); transform: scale(1); }
-            100% { box-shadow: 0 0 60px var(--shadow-gold), inset 0 0 30px var(--shadow-gold); transform: scale(1.03); }
+            0% { box-shadow: 0 0 50px rgba(240, 196, 47, 0.5), inset 0 0 25px rgba(240, 196, 47, 0.4); transform: scale(1); }
+            100% { box-shadow: 0 0 80px rgba(240, 196, 47, 0.8), inset 0 0 40px rgba(240, 196, 47, 0.6); transform: scale(1.03); }
         }
         @keyframes float-logo {
             0% { transform: translateY(0px) scale(1); }
-            50% { transform: translateY(-10px) scale(1.02); }
+            50% { transform: translateY(-12px) scale(1.02); }
             100% { transform: translateY(0px) scale(1); }
         }
 
         /* تدرج الألوان الذهبي للنصوص */
         .gold-text-gradient {
-            background: linear-gradient(90deg, var(--gold-light) 0%, var(--gold-mid) 50%, var(--gold-dark) 100%);
+            background: linear-gradient(90deg, var(--primary-gold) 0%, var(--secondary-gold) 50%, var(--dark-gold) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            text-shadow: 0 0 8px rgba(255, 215, 0, 0.4);
+            text-shadow: 0 0 10px rgba(240, 196, 47, 0.5);
+            font-family: 'El Messiri', serif;
+            font-weight: 700;
         }
 
-        /* تصميم البطاقات الجديدة (Card elegant) */
-        .card-elegant {
-            background: linear-gradient(145deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.03));
-            backdrop-filter: blur(20px);
+        /* تصميم البطاقات الجديدة */
+        .card-glowing {
+            background: var(--bg-accent);
             border-radius: 2.5rem;
-            border: 1px solid rgba(255, 215, 0, 0.4);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            border: 1px solid var(--card-border);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(25px);
+            transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
             position: relative;
             overflow: hidden;
         }
-        .card-elegant::before {
+
+        .card-glowing::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: -120%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.15), transparent);
-            transform: skewX(-35deg);
-            transition: left 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            top: -100%;
+            left: -100%;
+            width: 300%;
+            height: 300%;
+            background: radial-gradient(circle, rgba(240, 196, 47, 0.2) 0%, transparent 70%);
+            opacity: 0;
+            transition: opacity 0.5s, transform 0.5s;
+            transform: scale(0.5);
+            pointer-events: none;
         }
-        .card-elegant:hover::before {
-            left: 120%;
+        .card-glowing:hover::before {
+            opacity: 1;
+            transform: scale(1);
         }
-        .card-elegant:hover {
-            transform: translateY(-10px) scale(1.04);
-            border-color: var(--gold-light);
-            box-shadow: 0 20px 50px var(--shadow-gold);
+        .card-glowing:hover {
+            transform: translateY(-15px) scale(1.05);
+            border-color: var(--primary-gold);
+            box-shadow: 0 20px 60px rgba(240, 196, 47, 0.8);
         }
 
-        /* أيقونات تتوهج عند التمرير */
-        .icon-effect i {
+        /* أيقونات داخل البطاقات */
+        .card-glowing .icon-box {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.05);
+            display: flex;
+            align-items: center;
+            justify-content: center;
             transition: all 0.3s ease;
-            text-shadow: 0 0 8px rgba(255, 215, 0, 0.4);
         }
-        .icon-effect:hover i {
-            text-shadow: 0 0 20px var(--gold-light), 0 0 30px var(--gold-mid);
-            transform: scale(1.2) rotate(5deg);
+
+        .card-glowing:hover .icon-box {
+            background: rgba(240, 196, 47, 0.2);
+            transform: scale(1.1);
+        }
+
+        .card-glowing .icon-box i {
+            font-size: 2.5rem;
+            text-shadow: 0 0 15px var(--primary-gold);
         }
 
         /* حركات الظهور الانسيابية */
         .reveal-item {
             opacity: 0;
-            transform: translateY(40px) scale(0.9);
-            animation: revealAnimation 1s ease-out forwards;
+            transform: translateY(60px);
+            animation: revealAnimation 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
         }
-
         @keyframes revealAnimation {
-            to { opacity: 1; transform: translateY(0) scale(1); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
-        /* الأزرار الذهبية والخضراء بحركات مخصصة */
-        .btn-gold {
-            background: linear-gradient(45deg, var(--gold-light) 10%, var(--gold-dark) 90%);
+        /* أزرار الاتصال */
+        .btn-call {
+            background: linear-gradient(45deg, var(--primary-gold), var(--dark-gold));
             color: var(--bg-dark);
-            box-shadow: 0 6px 18px rgba(255, 215, 0, 0.4);
-            transition: all 0.3s ease;
+            box-shadow: 0 8px 25px rgba(240, 196, 47, 0.5);
             font-weight: 700;
-            padding: 1.25rem 1.5rem;
-            border-radius: 9999px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
         }
-        .btn-gold:hover {
-            transform: translateY(-5px) scale(1.06);
-            box-shadow: 0 10px 25px rgba(255, 215, 0, 0.6);
-        }
-        .btn-whatsapp {
-            background: linear-gradient(45deg, #25D366 10%, #128C7E 90%);
+        .btn-whatsapp-new {
+            background: linear-gradient(45deg, #25D366, #128C7E);
             color: white;
-            box-shadow: 0 6px 18px rgba(37, 211, 102, 0.4);
-            transition: all 0.3s ease;
+            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.5);
             font-weight: 700;
-            padding: 1.25rem 1.5rem;
-            border-radius: 9999px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
         }
-        .btn-whatsapp:hover {
-            transform: translateY(-5px) scale(1.06);
-            box-shadow: 0 10px 25px rgba(37, 211, 102, 0.6);
-        }
-
-        /* تخصيص أيقونة الموقع */
-        .location-icon-gold {
-            color: var(--gold-light);
-            text-shadow: 0 0 12px var(--gold-mid), 0 0 5px var(--gold-light);
-        }
-        
-        /* تحسينات لخطوط الأيقونات داخل البطاقات */
-        .card-elegant .w-16 i {
-            font-size: 2.25rem;
-            text-shadow: 0 0 10px var(--gold-light);
-        }
-
-        /* تحسينات بطاقة تواصلي معنا */
-        .contact-card-improved {
-            display: flex;
-            flex-direction: column;
-            gap: 1.5rem; /* مسافة بين العناصر داخل البطاقة */
-            padding: 2.5rem; /* بادينج أكبر للبطاقة */
-        }
-        .contact-card-improved h2 {
-            font-size: 2.5rem; /* خط أكبر للعنوان */
-            margin-bottom: 0.5rem; /* تقليل المسافة بين العنوان والأزرار */
-            font-weight: 800; /* جعل الخط أثقل */
-        }
-        .contact-card-improved .button-container {
-            display: flex;
-            flex-direction: column;
-            gap: 1.5rem; /* مسافة بين الأزرار */
-        }
-        
-        /* تعديل حجم الأيقونات في الأزرار */
-        .contact-card-improved .btn-gold i,
-        .contact-card-improved .btn-whatsapp i {
-            font-size: 1.75rem; /* حجم أكبر للأيقونات */
-            margin-right: 1rem; /* مسافة أكبر بين الأيقونة والنص */
-        }
-
-        @media (min-width: 640px) {
-            .contact-card-improved .button-container {
-                flex-direction: row; /* جعل الأزرار في صف واحد على الشاشات الكبيرة */
-            }
+        .btn-call:hover, .btn-whatsapp-new:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 15px 40px rgba(240, 196, 47, 0.8);
         }
     </style>
 </head>
 <body class="text-white">
 
-    <div class="islamic-pattern-bg"></div>
+    <div class="golden-gradient-bg">
+        <div class="golden-pattern"></div>
+    </div>
     <img src="lara_logo.png" class="watermark-logo" alt="Lara Hijab Watermark">
 
-    <div class="main-container relative w-full p-4 z-10">
+    <div class="main-container">
         
-        <div class="circular-logo-container reveal-item" style="animation-delay: 0.2s;">
-            <img src="lara_logo.png" alt="Lara Hijab Logo">
+        <div class="profile-container">
+            <div class="profile-image-frame">
+                <img src="lara_logo.png" alt="Lara Hijab Logo">
+            </div>
+            <h1 class="text-4xl mt-6 gold-text-gradient">Lara Hijab</h1>
+            <p class="text-lg mt-2 font-medium">اللمسة الذهبية التي تبحثين عنها.</p>
         </div>
         
-        <div class="w-full max-w-xl mx-auto">
-            <div class="card-elegant reveal-item contact-card-improved" style="animation-delay: 0.6s;">
-                <h2 class="text-center gold-text-gradient drop-shadow-lg">تواصلي معنا </h2>
-                <div class="button-container">
-                    <a href="tel:0652386525" class="btn-gold flex-1 transform-gpu hover:scale-105 transition-transform duration-300">
-                        <i class="fa-solid fa-phone-flip text-2xl"></i> <span>اتصال</span>
+        <div class="space-y-8">
+            <div class="card-glowing p-8 text-center reveal-item" style="animation-delay: 0.8s;">
+                <h2 class="text-3xl font-bold gold-text-gradient mb-6">تواصلي معنا</h2>
+                <div class="flex flex-col sm:flex-row gap-5">
+                    <a href="tel:0652386525" class="btn-call flex-1 py-5 px-6 rounded-full flex items-center justify-center text-lg transition-all duration-300 transform-gpu hover:shadow-2xl hover:scale-105">
+                        <i class="fa-solid fa-phone-flip text-2xl ml-3"></i> اتصال
                     </a>
-                    <a href="https://wa.me/213652386525" class="btn-whatsapp flex-1 transform-gpu hover:scale-105 transition-transform duration-300">
-                        <i class="fa-brands fa-whatsapp text-3xl"></i> <span>واتساب</span>
+                    <a href="https://wa.me/213652386525" class="btn-whatsapp-new flex-1 py-5 px-6 rounded-full flex items-center justify-center text-lg transition-all duration-300 transform-gpu hover:shadow-2xl hover:scale-105">
+                        <i class="fa-brands fa-whatsapp text-3xl ml-3"></i> واتساب
                     </a>
                 </div>
             </div>
 
-            <div id="links-container" class="space-y-6 mt-8">
-                </div>
+            <div id="links-container" class="space-y-6">
+            </div>
         </div>
     </div>
 
@@ -313,17 +282,17 @@
                 const card = document.createElement('a');
                 card.href = link.url;
                 card.target = '_blank';
-                card.className = 'card-elegant p-6 w-full flex items-center justify-between reveal-item icon-effect group';
-                card.style.animationDelay = `${1 + index * 0.2}s`;
+                card.className = 'card-glowing p-6 w-full flex items-center justify-between reveal-item group';
+                card.style.animationDelay = `${1.2 + index * 0.2}s`;
                 
                 card.innerHTML = `
                     <div class="flex items-center space-x-5 space-x-reverse">
-                        <div class="w-16 h-16 bg-black bg-opacity-30 rounded-full flex items-center justify-center">
-                            <i class="${link.icon} text-3xl ${link.icon === 'fa-solid fa-location-dot' ? 'location-icon-gold' : 'gold-text-gradient'}"></i>
+                        <div class="icon-box">
+                            <i class="${link.icon} ${link.icon === 'fa-solid fa-location-dot' ? 'text-primary-gold' : 'gold-text-gradient'}"></i>
                         </div>
                         <span class="text-xl font-medium text-gray-100">${link.name}</span>
                     </div>
-                    <i class="fa-solid fa-arrow-up-right-from-square text-amber-500 text-xl opacity-80 group-hover:text-gold-light group-hover:scale-110 transition-all duration-300"></i>
+                    <i class="fa-solid fa-arrow-up-right-from-square text-primary-gold text-2xl opacity-80 group-hover:scale-110 transition-all duration-300"></i>
                 `;
                 linksContainer.appendChild(card);
             });
