@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lara Hijab | رابطك الذهبي</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* الخلفية الذهبية المتلألئة */
+        body {
+            font-family: 'Tajawal', sans-serif;
+            background-color: #000;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%25' height='100%25' viewBox='0 0 1600 800'%3E%3Cg stroke='%23332A00' stroke-width='1.7' stroke-opacity='0.15' %3E%3Cpath fill='%23000' d='M-64 125l221.72-68.52L221.72 125-64 193.52zM250 200l221.72-68.52L471.72 200-50 268.52z'/%3E%3Cpath fill='%23000' d='M471.72 200L693.44 131.48 693.44 200 471.72 268.52z'/%3E%3Cpath fill='%23000' d='M-64 325l221.72-68.52L221.72 325-64 393.52z'/%3E%3Cpath fill='%23000' d='M250 400l221.72-68.52L471.72 400 250 468.52z'/%3E%3Cpath fill='%23000' d='M-64 525l221.72-68.52L221.72 525-64 593.52z'/%3E%3Cpath fill='%23000' d='M250 600l221.72-68.52L471.72 600 250 668.52z'/%3E%3Cpath fill='%23000' d='M-64 725l221.72-68.52L221.72 725-64 793.52z'/%3E%3Cpath fill='%23000' d='M250 800l221.72-68.52L471.72 800 250 868.52z'/%3E%3C/g%3E%3C/svg%3E");
+            background-attachment: fixed;
+            background-size: cover;
+            animation: move-background 15s linear infinite;
+        }
+
+        @keyframes move-background {
+            0% { background-position: 0% 0%; }
+            100% { background-position: 100% 100%; }
+        }
+
+        /* حاوية المحتوى الرئيسية */
+        .main-container {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            z-index: 10;
+        }
+
+        /* تأثير النيون على الشعار */
+        .neon-logo {
+            filter: drop-shadow(0 0 25px #FFD700);
+            animation: pulse-neon 2s infinite alternate;
+        }
+
+        @keyframes pulse-neon {
+            0% { filter: drop-shadow(0 0 15px #FFD700) drop-shadow(0 0 30px #FFD700); transform: scale(1); }
+            100% { filter: drop-shadow(0 0 25px #FFD700) drop-shadow(0 0 50px #FFD700); transform: scale(1.05); }
+        }
+
+        /* تصميم البطاقات الجديدة */
+        .card-elegant {
+            background: linear-gradient(145deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.02));
+            backdrop-filter: blur(15px);
+            border-radius: 2rem;
+            border: 1px solid rgba(255, 215, 0, 0.3);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card-elegant::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 215, 0, 0.1);
+            transform: skewX(-30deg);
+            transition: left 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .card-elegant:hover::before {
+            left: 100%;
+        }
+
+        .card-elegant:hover {
+            transform: translateY(-5px) scale(1.02);
+            border-color: rgba(255, 215, 0, 0.6);
+            box-shadow: 0 15px 40px rgba(255, 215, 0, 0.2);
+        }
+
+        /* تأثير التوهج عند تمرير الماوس */
+        .icon-glow-effect {
+            text-shadow: 0 0 15px #FFD700;
+        }
+
+        /* حركات الظهور الاحترافية */
+        .slide-in-up {
+            opacity: 0;
+            transform: translateY(50px);
+            animation: slideInUp 0.8s ease-out forwards;
+        }
+
+        @keyframes slideInUp {
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="text-white">
+
+    <div class="main-container relative w-full p-4">
+        
+        <div class="mb-16 slide-in-up" style="animation-delay: 0.2s;">
+            <img src="lara_logo.png" alt="Lara Hijab Logo" class="w-60 h-auto neon-logo">
+        </div>
+        
+        <div class="w-full max-w-xl">
+            <div class="card-elegant p-8 mb-8 text-center slide-in-up" style="animation-delay: 0.6s;">
+                <h2 class="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-amber-300 to-amber-600 mb-6 drop-shadow-lg">تواصلي معنا الآن</h2>
+                <div class="flex flex-col sm:flex-row gap-5">
+                    <a href="tel:0652386525" class="group flex-1 bg-gradient-to-r from-amber-500 to-amber-600 text-black font-bold py-5 px-6 rounded-full hover:shadow-xl hover:shadow-amber-500/50 transition-all duration-300 transform hover:scale-105 flex items-center justify-center text-lg">
+                        <i class="fa-solid fa-phone-flip text-2xl mr-4 transform group-hover:rotate-6 transition-transform"></i> اتصال
+                    </a>
+                    <a href="https://wa.me/213652386525" class="group flex-1 bg-gradient-to-r from-green-500 to-green-600 text-white font-bold py-5 px-6 rounded-full hover:shadow-xl hover:shadow-green-500/50 transition-all duration-300 transform hover:scale-105 flex items-center justify-center text-lg">
+                        <i class="fa-brands fa-whatsapp text-3xl mr-4 transform group-hover:scale-110 transition-transform"></i> واتساب
+                    </a>
+                </div>
+            </div>
+
+            <div id="links-container" class="space-y-6">
+                </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const linksContainer = document.getElementById('links-container');
+            const socialLinks = [
+                { name: 'تيك توك', url: 'https://www.tiktok.com/@lara.hijab.jilbab', icon: 'fa-brands fa-tiktok' },
+                { name: 'انستغرام', url: 'https://www.instagram.com/lara.hijab.jilbab', icon: 'fa-brands fa-instagram' },
+                { name: 'فيسبوك', url: 'https://www.facebook.com/share/15DRYooPtrs/', icon: 'fa-brands fa-facebook-f' },
+                { name: 'موقعنا', url: 'https://www.google.com/maps', icon: 'fa-solid fa-location-dot' }
+            ];
+
+            socialLinks.forEach((link, index) => {
+                const card = document.createElement('a');
+                card.href = link.url;
+                card.target = '_blank';
+                card.className = 'card-elegant p-6 w-full flex items-center justify-between transition-all duration-300 slide-in-up';
+                card.style.animationDelay = `${1 + index * 0.2}s`;
+                
+                card.innerHTML = `
+                    <div class="flex items-center space-x-5 space-x-reverse">
+                        <div class="w-16 h-16 bg-black bg-opacity-30 rounded-full flex items-center justify-center">
+                            <i class="${link.icon} text-3xl text-white icon-glow-effect"></i>
+                        </div>
+                        <span class="text-xl font-medium text-gray-100">${link.name}</span>
+                    </div>
+                    <i class="fa-solid fa-arrow-up-right-from-square text-amber-500 text-xl opacity-80"></i>
+                `;
+                linksContainer.appendChild(card);
+            });
+        });
+    </script>
+</body>
+</html>
