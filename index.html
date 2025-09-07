@@ -14,136 +14,209 @@
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&family=El+Messiri:wght@400;500;600;700&display=swap" rel="stylesheet">
 
     <style>
+        /* تعريف الألوان الأساسية */
         :root {
-            --primary-gold: #FFD700;
-            --secondary-gold: #DAA520;
-            --dark-gold: #B8860B;
-            --bg-dark: #0A0A0A;
-            --shadow-gold: rgba(255, 215, 0, 0.5);
-            --text-light: #F0F0F0;
+            --gold-primary: #FFD700;       /* ذهبي أساسي */
+            --gold-secondary: #DAA520;     /* ذهبي ثانوي */
+            --gold-dark: #B8860B;          /* ذهبي داكن */
+            --black-bg: #0A0A0A;           /* خلفية سوداء عميقة */
+            --shadow-glow: rgba(255, 215, 0, 0.4); /* ظل ذهبي متوهج */
+            --text-light: #F0F0F0;         /* لون نص فاتح */
         }
 
+        /* الجسم الأساسي للصفحة */
         body {
             font-family: 'Tajawal', sans-serif;
-            background-color: var(--bg-dark);
+            background-color: var(--black-bg);
             color: var(--text-light);
-            overflow-x: hidden;
+            overflow-x: hidden; /* لمنع ظهور شريط التمرير الأفقي */
             display: flex;
             justify-content: center;
+            align-items: flex-start; /* لتبدأ المحتوى من الأعلى */
             min-height: 100vh;
-            padding: 1rem 0;
+            padding: 2rem 0; /* مسافة داخلية علوية وسفلية للمحتوى */
+            position: relative; /* للسماح بوضع العناصر المطلقة بداخله */
         }
 
-        /* الخلفية بنقوش إسلامية */
+        /* الخلفية الإسلامية المتحركة (فسيفساء ذهبية) */
         .islamic-pattern-bg {
             position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            z-index: 0; pointer-events: none; overflow: hidden;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            z-index: 0; /* للتأكد من أنها خلفية */
+            pointer-events: none; /* لتجاهل تفاعلات الماوس */
+            overflow: hidden;
+            opacity: 0.1; /* شفافية خفيفة جداً */
+            background-image: url('data:image/svg+xml;charset=UTF-8,%3Csvg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"%3E%3Cdefs%3E%3Cpattern id="islamicGrid" width="20" height="20" patternUnits="userSpaceOnUse"%3E%3Cpath d="M10 0 L10 20 M0 10 L20 10 M0 0 L20 20 M20 0 L0 20" stroke="%23DAA520" stroke-width="0.3" opacity="0.4" /%3E%3C/pattern%3E%3C/defs%3E%3Crect width="100%" height="100%" fill="url(%23islamicGrid)"/%3E%3C/svg%3E');
+            background-size: 100px 100px; /* حجم النمط */
+            animation: movePattern 60s linear infinite alternate; /* حركة بطيئة للخلفية */
         }
-        .islamic-pattern-bg::before {
-            content: '';
-            position: absolute;
-            width: 180%; height: 180%; top: -40%; left: -40%;
-            background-image: url('data:image/svg+xml,%3Csvg width="100%" height="100%" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"%3E%3Cdefs%3E%3Cpattern id="islamicPattern" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse"%3E%3Cpath d="M10 0 L10 20 M0 10 L20 10" stroke="%23B8860B" stroke-width="0.2"/%3E%3Cpath d="M0 0 L20 20 M20 0 L0 20" stroke="%23DAA520" stroke-width="0.08"/%3E%3C/pattern%3E%3C/defs%3E%3Crect x="0" y="0" width="100%" height="100%" fill="url(%23islamicPattern)"/%3E%3C/svg%3E');
-            opacity: 0.04;
-            animation: rotate-pattern 80s linear infinite, pulse-opacity 12s ease-in-out infinite alternate;
+
+        @keyframes movePattern {
+            0% { background-position: 0% 0%; }
+            100% { background-position: 100% 100%; }
         }
-        @keyframes rotate-pattern {
-            from { transform: rotate(0deg); } to { transform: rotate(360deg); }
+
+        /* حاوية المحتوى الرئيسية */
+        .main-content-wrapper {
+            position: relative; /* لجعلها فوق الخلفية */
+            z-index: 10;
+            width: 100%;
+            max-width: 550px; /* عرض أقصى للتحكم في التصميم */
+            padding: 0 1rem;
         }
-        @keyframes pulse-opacity {
-            0% { opacity: 0.02; } 100% { opacity: 0.06; }
+
+        /* منطقة الشعار والاسم */
+        .profile-header {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            margin-bottom: 3.5rem;
+            animation: fade-in-up 1s ease-out forwards;
+            opacity: 0;
+            transform: translateY(20px);
         }
-        
-        /* الشعار الرئيسي */
-        .profile-container {
-            animation: slide-down 1s ease-out forwards; opacity: 0;
+
+        /* إطار الشعار (مستوحى من صورتك) */
+        .logo-frame {
+            position: relative;
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: radial-gradient(circle, var(--gold-primary) 0%, transparent 60%);
+            box-shadow: 0 0 60px var(--shadow-glow); /* توهج حول الشعار */
+            animation: pulse-frame 3s ease-in-out infinite alternate; /* نبض خفيف للإطار */
         }
-        .profile-image-frame {
-            position: relative; width: 180px; height: 180px; border-radius: 50%;
-            background: radial-gradient(circle, rgba(255, 215, 0, 0.4) 0%, transparent 70%);
-            box-shadow: 0 0 45px var(--shadow-gold), inset 0 0 20px var(--shadow-gold);
-            animation: pulse-border 4s ease-in-out infinite alternate;
+        .logo-frame img {
+            width: 80%; /* حجم اللوجو داخل الإطار */
+            height: 80%;
+            object-fit: contain;
+            border-radius: 50%;
+            filter: drop-shadow(0 0 15px var(--gold-primary)); /* توهج للشعار نفسه */
+            animation: float-logo 4s ease-in-out infinite; /* حركة عائمة للوجو */
         }
-        .profile-image-frame img {
-            width: 65%; height: 65%; object-fit: contain;
-            filter: drop-shadow(0 0 15px var(--primary-gold));
-            animation: float-logo 5s ease-in-out infinite;
+
+        /* حركات الشعار والاسم */
+        @keyframes fade-in-up {
+            to { opacity: 1; transform: translateY(0); }
         }
-        @keyframes slide-down {
-            from { transform: translateY(-40px); opacity: 0; } to { transform: translateY(0); opacity: 1; }
-        }
-        @keyframes pulse-border {
-            0% { box-shadow: 0 0 35px var(--shadow-gold), inset 0 0 15px var(--shadow-gold); transform: scale(1); }
-            100% { box-shadow: 0 0 55px var(--shadow-gold), inset 0 0 25px var(--shadow-gold); transform: scale(1.03); }
+        @keyframes pulse-frame {
+            0% { box-shadow: 0 0 40px var(--shadow-glow); transform: scale(1); }
+            100% { box-shadow: 0 0 70px var(--shadow-glow); transform: scale(1.02); }
         }
         @keyframes float-logo {
-            0% { transform: translateY(0px); } 50% { transform: translateY(-8px); } 100% { transform: translateY(0px); }
+            0% { transform: translateY(0px) rotate(-1deg); }
+            50% { transform: translateY(-8px) rotate(1deg); }
+            100% { transform: translateY(0px) rotate(-1deg); }
         }
 
-        /* النصوص الذهبية */
-        .gold-text-gradient {
-            background: linear-gradient(90deg, var(--primary-gold), var(--secondary-gold), var(--primary-gold));
-            background-size: 200% auto;
+        /* تدرج ذهبي للنصوص */
+        .gold-text {
+            background: linear-gradient(90deg, var(--gold-primary) 0%, var(--gold-secondary) 50%, var(--gold-primary) 100%);
+            background-size: 200% 100%;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            text-shadow: 0 0 8px rgba(255, 215, 0, 0.4);
-            font-family: 'El Messiri', serif; font-weight: 700;
-            animation: shimmer-text 5s linear infinite;
+            text-shadow: 0 0 6px rgba(255, 215, 0, 0.3);
+            font-family: 'El Messiri', serif;
+            font-weight: 700;
+            animation: shimmer-text 4s linear infinite; /* تأثير لمعان النص */
         }
         @keyframes shimmer-text {
-            to { background-position: 200% center; }
+            to { background-position: -200% center; }
         }
 
-        /* البطاقات الأنيقة */
-        .card-elegant {
+        /* تصميم البطاقات (لروابط التواصل) */
+        .info-card {
             background: linear-gradient(145deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.02));
-            backdrop-filter: blur(15px);
-            border-radius: 1.5rem; border: 1px solid rgba(255, 215, 0, 0.3);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
-            transition: all 0.3s ease-out;
-            position: relative; overflow: hidden;
+            backdrop-filter: blur(10px);
+            border-radius: 1.5rem;
+            border: 1px solid rgba(255, 215, 0, 0.3);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            position: relative;
+            overflow: hidden;
+            padding: 1.5rem;
+            animation: fade-in-up 0.8s ease-out forwards;
         }
-        .card-elegant:hover {
-            transform: translateY(-8px) scale(1.03);
-            border-color: var(--primary-gold);
-            box-shadow: 0 15px 40px var(--shadow-gold);
-        }
-        .card-elegant::before {
-            content: ''; position: absolute; top: 0; left: -100%;
+        .info-card::before { /* تأثير البريق عند التمرير */
+            content: '';
+            position: absolute;
+            top: 0; left: -100%;
             width: 80%; height: 100%;
             background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.15), transparent);
-            transform: skewX(-30deg); transition: left 0.6s ease;
+            transform: skewX(-30deg);
+            transition: left 0.6s ease;
         }
-        .card-elegant:hover::before { left: 120%; }
+        .info-card:hover::before { left: 120%; }
+        .info-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            border-color: var(--gold-primary);
+            box-shadow: 0 15px 35px var(--shadow-glow);
+        }
 
-        /* الأزرار */
-        .btn {
-            transition: all 0.3s ease; font-weight: 700; padding: 1rem 1.5rem;
-            border-radius: 9999px; display: flex; align-items: center; justify-content: center;
-            gap: 0.75rem; font-size: 1.1rem;
+        /* الأزرار العلوية (اتصال و واتساب) */
+        .action-button {
+            padding: 1.25rem 1.5rem;
+            border-radius: 9999px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
         }
-        .btn:hover { transform: translateY(-4px) scale(1.05); }
-        .btn i { transition: transform 0.3s ease; font-size: 1.6rem; }
-        .btn:hover i { transform: rotate(10deg); }
-        .btn-gold {
-            background: linear-gradient(45deg, var(--primary-gold), var(--dark-gold));
-            color: #1A1A1A; box-shadow: 0 5px 15px rgba(255, 215, 0, 0.3);
+        .action-button:hover {
+            transform: translateY(-5px) scale(1.04);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.4);
         }
-        .btn-gold:hover { box-shadow: 0 8px 25px rgba(255, 215, 0, 0.5); }
+        .action-button i {
+            font-size: 1.8rem;
+            transition: transform 0.3s ease;
+        }
+        .action-button:hover i {
+            transform: rotate(10deg);
+        }
+
+        .btn-call {
+            background: linear-gradient(45deg, var(--gold-primary), var(--gold-dark));
+            color: var(--black-bg);
+            box-shadow: 0 6px 18px rgba(255, 215, 0, 0.4);
+        }
         .btn-whatsapp {
-            background: linear-gradient(45deg, #25D366, #128C7E);
-            color: white; box-shadow: 0 5px 15px rgba(37, 211, 102, 0.3);
+            background: linear-gradient(45deg, #25D366, #128C7E); /* ألوان واتساب */
+            color: white;
+            box-shadow: 0 6px 18px rgba(37, 211, 102, 0.4);
         }
-        .btn-whatsapp:hover { box-shadow: 0 8px 25px rgba(37, 211, 102, 0.5); }
 
-        /* حركات الظهور */
-        .reveal-item {
-            opacity: 0; transform: translateY(30px) scale(0.95);
-            animation: reveal-up 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+        /* أيقونات روابط التواصل (التي كانت مختفية) */
+        .social-link-icon {
+            font-size: 2.2rem;
+            color: var(--gold-primary); /* لون ذهبي واضح */
+            text-shadow: 0 0 12px var(--shadow-glow); /* توهج ذهبي */
+            transition: transform 0.3s ease;
         }
-        @keyframes reveal-up {
-            to { opacity: 1; transform: translateY(0) scale(1); }
+        .social-link:hover .social-link-icon {
+            transform: scale(1.1) rotate(5deg);
+        }
+        .social-link-name {
+            font-size: 1.3rem; /* حجم نص الاسم */
+            font-weight: 500;
+            color: var(--text-light);
+        }
+        .external-link-arrow {
+            color: var(--gold-secondary);
+            font-size: 1.1rem;
+            opacity: 0.7;
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+        .social-link:hover .external-link-arrow {
+            opacity: 1;
+            transform: translateX(5px);
         }
     </style>
 </head>
@@ -151,65 +224,60 @@
 
     <div class="islamic-pattern-bg"></div>
 
-    <div class="w-full max-w-lg mx-auto p-4 z-10">
+    <div class="main-content-wrapper">
         
-        <div class="profile-container flex flex-col items-center text-center mb-10">
-            <div class="profile-image-frame flex items-center justify-center">
+        <div class="profile-header">
+            <div class="logo-frame rounded-full mb-6" style="animation-delay: 0.2s;">
                 <img src="lara_logo.png" alt="Lara Hijab Logo">
             </div>
-            <h1 class="text-5xl mt-6 gold-text-gradient">Lara Hijab</h1>
-            <p class="text-lg mt-2 text-gray-300 reveal-item" style="animation-delay: 0.2s;">اللمسة الذهبية التي تبحثين عنها.</p>
+            <h1 class="text-5xl gold-text" style="animation-delay: 0.4s;">Lara Hijab</h1>
+            <p class="text-lg mt-3 text-gray-300" style="animation-delay: 0.6s;">اللمسة الذهبية التي تبحثين عنها.</p>
         </div>
 
         <div class="space-y-6">
-            <div class="card-elegant p-6 text-center reveal-item" style="animation-delay: 0.4s;">
-                <h2 class="text-2xl font-bold gold-text-gradient mb-5">تواصلي معنا</h2>
+            <div class="info-card text-center" style="animation-delay: 0.8s;">
+                <h2 class="text-3xl font-bold gold-text mb-5">تواصلي معنا</h2>
                 <div class="flex flex-col sm:flex-row gap-4">
-                    <a href="tel:0652386525" class="btn btn-gold flex-1">
+                    <a href="tel:0652386525" class="action-button btn-call flex-1">
                         <i class="fa-solid fa-phone-flip"></i> <span>اتصال</span>
                     </a>
-                    <a href="https://wa.me/213652386525" class="btn btn-whatsapp flex-1">
+                    <a href="https://wa.me/213652386525" class="action-button btn-whatsapp flex-1">
                         <i class="fa-brands fa-whatsapp"></i> <span>واتساب</span>
                     </a>
                 </div>
             </div>
 
-            <div id="links-container" class="space-y-4">
-            </div>
+            <div id="social-links-container" class="space-y-4">
+                </div>
         </div>
     </div>
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            const linksContainer = document.getElementById('links-container');
-            const socialLinks = [
+            const socialLinksContainer = document.getElementById('social-links-container');
+
+            const socialMediaPlatforms = [
                 { name: 'تيك توك', url: 'https://www.tiktok.com/@lara.hijab.jilbab', icon: 'fa-brands fa-tiktok' },
                 { name: 'انستغرام', url: 'https://www.instagram.com/lara.hijab.jilbab', icon: 'fa-brands fa-instagram' },
                 { name: 'فيسبوك', url: 'https://www.facebook.com/share/15DRYooPtrs/', icon: 'fa-brands fa-facebook-f' },
-                // ✨ ملاحظة: قم باستبدال الرابط التالي برابط موقعك الصحيح من خرائط جوجل
-                { name: 'موقعنا', url: 'https://maps.app.goo.gl/YourLocationLink', icon: 'fa-solid fa-location-dot' }
+                { name: 'موقعنا على الخريطة', url: 'https://maps.app.goo.gl/your-location-link', icon: 'fa-solid fa-location-dot' } // ✨ مهم: استبدل هذا الرابط برابط موقعك الفعلي على خرائط جوجل
             ];
 
-            socialLinks.forEach((link, index) => {
-                const card = document.createElement('a');
-                card.href = link.url;
-                card.target = '_blank';
-                card.className = 'card-elegant p-4 w-full flex items-center justify-between reveal-item group';
-                // تأخير ظهور البطاقات بشكل متتابع
-                card.style.animationDelay = `${0.6 + index * 0.15}s`;
-                
-                // --- هنا تم التصحيح ---
-                // تم تبديل التصميم ليصبح أكثر وضوحاً وحل مشكلة الأيقونات
-                card.innerHTML = `
+            socialMediaPlatforms.forEach((platform, index) => {
+                const linkCard = document.createElement('a');
+                linkCard.href = platform.url;
+                linkCard.target = '_blank'; // لفتح الرابط في نافذة جديدة
+                linkCard.className = 'social-link info-card flex items-center justify-between p-4';
+                linkCard.style.animationDelay = `${1.2 + index * 0.15}s`; // تأخير ظهور متتالي
+
+                linkCard.innerHTML = `
                     <div class="flex items-center gap-4">
-                        <div class="w-12 h-12 flex items-center justify-center">
-                             <i class="${link.icon} text-3xl text-yellow-400 group-hover:scale-110 transition-transform duration-300" style="text-shadow: 0 0 10px var(--shadow-gold);"></i>
-                        </div>
-                        <span class="text-xl font-medium">${link.name}</span>
+                        <i class="${platform.icon} social-link-icon"></i>
+                        <span class="social-link-name">${platform.name}</span>
                     </div>
-                    <i class="fa-solid fa-arrow-up-right-from-square text-yellow-500 text-lg opacity-70 group-hover:opacity-100 transition-opacity"></i>
+                    <i class="fa-solid fa-arrow-up-right-from-square external-link-arrow"></i>
                 `;
-                linksContainer.appendChild(card);
+                socialLinksContainer.appendChild(linkCard);
             });
         });
     </script>
