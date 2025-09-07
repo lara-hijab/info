@@ -1,20 +1,13 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lara Hijab | فخامة لا مثيل لها</title>
+    <title>lara hijab | فخامة لا مثيل لها</title>
     
     <script src="https://cdn.tailwindcss.com"></script>
     
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2g2uT2b/d8F7g1T/Ff9zO/A/n3O/Pj9M7F7g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-<link 
-  rel="stylesheet" 
-  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" 
-  integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2g2uT2b/d8F7g1T/Ff9zO/A/n3O/Pj9M7F7gZvn1koRaSPBb+jC6UgSQA==" 
-  crossorigin="anonymous" 
-  referrerpolicy="no-referrer" 
-/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2g2uT2b/d8F7g1T/Ff9zO/A/n3O/Pj9M7F7gZvn1koRaSPBb+jC6UgSQA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&family=El+Messiri:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -22,14 +15,14 @@
     <style>
         /* تعريف الألوان المتدرجة الجديدة */
         :root {
-            --primary-gold: #FFD700;       /* ذهبي كلاسيكي */
-            --secondary-gold: #DAA520;     /* ذهبي غامق */
-            --dark-gold: #B8860B;          /* برونزي */
-            --bg-dark: #0A0A0A;
-            --bg-accent: #1B1B1B;
+            --primary-gold: #ffd700;       /* ذهبي كلاسيكي */
+            --secondary-gold: #daa520;     /* ذهبي غامق */
+            --dark-gold: #b8860b;          /* برونزي */
+            --bg-dark: #0a0a0a;
+            --bg-accent: #1b1b1b;
             --card-border: rgba(255, 215, 0, 0.4);
             --shadow-gold: rgba(255, 215, 0, 0.6);
-            --text-light: #F0F0F0;
+            --text-light: #f0f0f0;
         }
 
         body {
@@ -64,7 +57,7 @@
             height: 180%;
             top: -40%;
             left: -40%;
-            background-image: url('data:image/svg+xml,%3Csvg width="100%" height="100%" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"%3E%3Cdefs%3E%3Cpattern id="islamicPattern" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse"%3E%3Cpath d="M10 0 L10 20 M0 10 L20 10" stroke="%23B8860B" stroke-width="0.2"/%3E%3Cpath d="M0 0 L20 20 M20 0 L0 20" stroke="%23DAA520" stroke-width="0.08"/%3E%3C/pattern%3E%3C/defs%3E%3Crect x="0" y="0" width="100%" height="100%" fill="url(%23islamicPattern)"/%3E%3C/svg%3E');
+            background-image: url('data:image/svg+xml,%3csvg width="100%" height="100%" viewbox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"%3e%3cdefs%3e%3cpattern id="islamicpattern" x="0" y="0" width="20" height="20" patternunits="userspaceonuse"%3e%3cpath d="m10 0 l10 20 m0 10 l20 10" stroke="%23b8860b" stroke-width="0.2"/%3e%3cpath d="m0 0 l20 20 m20 0 l0 20" stroke="%23daa520" stroke-width="0.08"/%3e%3c/pattern%3e%3c/defs%3e%3crect x="0" y="0" width="100%" height="100%" fill="url(%23islamicpattern)"/%3e%3c/svg%3e');
             opacity: 0.04;
             transform-origin: center center;
             animation: rotate-pattern 80s linear infinite, pulse-opacity 12s ease-in-out infinite alternate;
@@ -163,7 +156,7 @@
             font-weight: 700;
         }
 
-        /* تصميم البطاقات الجديدة (Card elegant) */
+        /* تصميم البطاقات الجديدة (card elegant) */
         .card-elegant {
             background: linear-gradient(145deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.03));
             backdrop-filter: blur(20px);
@@ -208,10 +201,10 @@
         .reveal-item {
             opacity: 0;
             transform: translateY(40px) scale(0.9);
-            animation: revealAnimation 1s ease-out forwards;
+            animation: revealanimation 1s ease-out forwards;
         }
 
-        @keyframes revealAnimation {
+        @keyframes revealanimation {
             to { opacity: 1; transform: translateY(0) scale(1); }
         }
 
@@ -234,7 +227,7 @@
             box-shadow: 0 10px 25px rgba(255, 215, 0, 0.6);
         }
         .btn-whatsapp {
-            background: linear-gradient(45deg, #25D366 10%, #128C7E 90%);
+            background: linear-gradient(45deg, #25d366 10%, #128c7e 90%);
             color: white;
             box-shadow: 0 6px 18px rgba(37, 211, 102, 0.4);
             transition: all 0.3s ease;
@@ -290,15 +283,15 @@
 <body class="text-white">
 
     <div class="islamic-pattern-bg"></div>
-    <img src="lara_logo.png" class="watermark-logo" alt="Lara Hijab Watermark">
+    <img src="lara_logo.png" class="watermark-logo" alt="lara hijab watermark">
 
     <div class="main-container relative w-full p-4 z-10">
         
         <div class="profile-container">
             <div class="profile-image-frame reveal-item" style="animation-delay: 0.2s;">
-                <img src="lara_logo.png" alt="Lara Hijab Logo">
+                <img src="lara_logo.png" alt="lara hijab logo">
             </div>
-            <h1 class="text-4xl mt-6 gold-text-gradient reveal-item" style="animation-delay: 0.4s;">Lara Hijab</h1>
+            <h1 class="text-4xl mt-6 gold-text-gradient reveal-item" style="animation-delay: 0.4s;">lara hijab</h1>
             <p class="text-lg mt-2 font-medium reveal-item" style="animation-delay: 0.6s;">اللمسة الذهبية التي تبحثين عنها.</p>
         </div>
 
@@ -327,7 +320,7 @@
                 { name: 'تيك توك', url: 'https://www.tiktok.com/@lara.hijab.jilbab', icon: 'fa-brands fa-tiktok' },
                 { name: 'انستغرام', url: 'https://www.instagram.com/lara.hijab.jilbab', icon: 'fa-brands fa-instagram' },
                 { name: 'فيسبوك', url: 'https://www.facebook.com/share/15DRYooPtrs/', icon: 'fa-brands fa-facebook-f' },
-                { name: 'موقعنا', url: 'https://www.google.com/maps', icon: 'fa-solid fa-location-dot' }
+                { name: 'موقعنا على الخريطة', url: 'https://www.google.com/maps/search/?api=1&query=Lara+Hijab,Khenchela', icon: 'fa-solid fa-location-dot' }
             ];
 
             socialLinks.forEach((link, index) => {
