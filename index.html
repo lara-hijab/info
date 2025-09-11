@@ -1,198 +1,194 @@
-<!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<!doctype html>
+
+<!--
+  lara-hijab_rewrite.html
+  Rewritten single-file page. English copy + RTL Arabic support.
+  Features:
+    - Inline SVG gold icons (no external icon font)
+    - Accessible link cards with aria labels
+    - Animated golden border
+    - Small built-in JS tests: run runPageTests() in console
+    - Deployment notes (CNAME + GitHub Pages) at the top
+--><html lang="ar" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lara Hijab | فخامة لا مثيل لها</title>
-    
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2g2uT2b/d8F7g1T/Ff9zO/A/n3O/Pj9M7F7gZvn1koRaSPBb+jC6UgSQA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&family=El+Messiri:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    
-    <style>
-        :root {
-            --gold-light: #FFD700;
-            --gold-dark: #B8860B;
-            --black-primary: #000000;
-            --card-bg: rgba(22, 22, 22, 0.7);
-            --border-color: rgba(255, 215, 0, 0.2);
-            --text-light: #F5F5F5;
-        }
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Lara Hijab — elegant modest fashion. Contact, shop links and map.">
+  <meta name="theme-color" content="#0b0b0b">
+  <title>Lara Hijab — Links</title>  <!-- Fonts: preload + preconnect -->  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;600;700;800&family=El+Messiri:wght@500;700&display=swap" rel="stylesheet">  <style>
+    :root{
+      --bg:#040404;
+      --card-bg:rgba(18,18,18,0.72);
+      --muted:#cfcfcf;
+      --gold1:#FFD966;
+      --gold2:#C08600;
+      --glass:rgba(255,255,255,0.03);
+      --gap:18px;
+      --radius:14px;
+      --maxw:520px;
+      --transition:260ms cubic-bezier(.2,.9,.3,1);
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0; min-height:100%; background:var(--bg);
+      color:#eee; font-family:'Tajawal',system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial;
+      display:grid; place-items:center; padding:28px; line-height:1.4; -webkit-font-smoothing:antialiased;
+      background-image:radial-gradient(circle at 20% 10%, rgba(200,160,30,0.03) 0%, transparent 35%);
+    }
 
-        body {
-            font-family: 'Tajawal', sans-serif;
-            background-color: var(--black-primary);
-            color: var(--text-light);
-            display: grid;
-            place-items: center;
-            min-height: 100vh;
-            padding: 2rem 1rem;
-            background-image: radial-gradient(circle at center, rgba(40,30,0,0.3) 0%, var(--black-primary) 70%);
-        }
+    .frame{width:100%; max-width:var(--maxw);}
+    .card-wrap{display:flex; flex-direction:column; gap:22px; align-items:stretch}
 
-        .main-content {
-            position: relative;
-            z-index: 10;
-            width: 100%;
-            max-width: 500px; /* Slightly wider for a better feel */
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 2rem;
-        }
+    /* Header */
+    .header{display:flex; align-items:center; gap:16px; padding:18px;}
+    .logo{
+      width:110px; height:110px; border-radius:999px; display:grid;place-items:center; flex:0 0 110px;
+      background:radial-gradient(circle at 35% 30%, rgba(255,230,170,0.08), transparent 35%), linear-gradient(180deg, rgba(255,245,200,0.03), rgba(0,0,0,0.18));
+      border:1px solid rgba(255,215,0,0.08); box-shadow:0 10px 30px rgba(0,0,0,0.6), 0 0 30px rgba(255,200,0,0.03);
+    }
+    .logo img{width:72px; height:72px; object-fit:contain; border-radius:50%}
+    .brand{flex:1}
+    .brand h1{margin:0; font-family:'El Messiri'; font-size:28px; line-height:1; letter-spacing:0.2px;
+      background:linear-gradient(90deg,var(--gold1),#FFF6D6,var(--gold1)); -webkit-background-clip:text; -webkit-text-fill-color:transparent;
+      text-shadow:0 0 18px rgba(255,210,60,0.12);
+    }
+    .brand p{margin:6px 0 0;color:var(--muted); font-size:14px}
 
-        /* Header & Logo */
-        .profile-header { text-align: center; }
-        .logo-container {
-            width: 150px; height: 150px; margin: 0 auto 1.5rem; border-radius: 50%;
-            display: grid; place-items: center;
-            background: radial-gradient(circle, rgba(255, 215, 0, 0.05) 0%, transparent 70%);
-            border: 2px solid var(--border-color);
-            box-shadow: 0 0 50px rgba(255,215,0,0.1);
-        }
-        .logo-container img {
-            width: 100px; height: 100px; object-fit: contain; border-radius: 50%;
-            filter: drop-shadow(0 0 10px var(--gold-light));
-        }
-        .brand-title {
-            font-family: 'El Messiri', serif; font-size: clamp(3rem, 10vw, 4rem); font-weight: 700;
-            background: linear-gradient(90deg, #E6BF55, #FFFBD6, #E6BF55);
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-            text-shadow: 0 0 25px rgba(255, 215, 0, 0.4);
-        }
+    /* Links list */
+    .links{display:flex; flex-direction:column; gap:12px; padding:6px}
+    .link-card{
+      display:flex; align-items:center; gap:14px; padding:14px; text-decoration:none; color:inherit;
+      background:var(--card-bg); border-radius:var(--radius); position:relative; overflow:hidden;
+      border:1px solid rgba(255,215,0,0.06); backdrop-filter:blur(8px);
+      transition:transform var(--transition), box-shadow var(--transition);
+    }
+    .link-card:focus{outline:2px solid rgba(255,215,0,0.14); outline-offset:3px}
+    .link-card:hover{transform:translateX(-6px); box-shadow:0 14px 30px rgba(0,0,0,0.55)}
 
-        /* Redesigned Link Cards */
-        .links-container {
-            width: 100%; display: flex; flex-direction: column; gap: 1.25rem; /* Increased gap */
-        }
-        
-        .link-card {
-            position: relative; display: flex; align-items: center; width: 100%;
-            /* Increased padding for a larger, more substantial card */
-            padding: 1.5rem; 
-            text-decoration: none; color: var(--text-light);
-            background-color: var(--card-bg);
-            /* Subtle noise texture for a premium feel */
-            background-image: url('data:image/svg+xml,%3Csvg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg"%3E%3Cfilter id="noise"%3E%3CfeTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="3" stitchTiles="stitch"/%3E%3CfeColorMatrix type="saturate" values="0"/%3E%3C/filter%3E%3Crect width="100%" height="100%" filter="url(%23noise)" opacity="0.03"/%3E%3C/svg%3E');
-            border: 1px solid var(--border-color);
-            border-radius: 1rem; /* Softer radius */
-            backdrop-filter: blur(12px);
-            transition: all 0.3s ease;
-            overflow: hidden; 
-        }
+    /* animated border */
+    .link-card::before{
+      content:''; position:absolute; inset:-45%; z-index:0; background:conic-gradient(from 120deg at 50% 50%, rgba(255,215,0,0.09), rgba(192,120,0,0.07)); transform:rotate(0deg); transition:opacity 220ms linear; opacity:0
+    }
+    .link-card:hover::before{opacity:1; transform:rotate(30deg)}
+    .icon-wrap{width:56px; height:56px; flex:0 0 56px; display:grid; place-items:center; z-index:2}
+    .title{font-weight:700; font-size:16px; z-index:2}
+    .meta{font-size:13px; color:var(--muted); z-index:2}
+    .chev{margin-inline-start:auto; color:var(--gold2); z-index:2}
 
-        /* Animated Glowing Border Effect */
-        .link-card::before {
-            content: ''; position: absolute; z-index: -1;
-            top: -50%; left: -50%; width: 200%; height: 200%;
-            background-color: var(--black-primary);
-            background-repeat: no-repeat;
-            background-size: 50% 50%, 50% 50%;
-            background-position: 0 0, 100% 0, 100% 100%, 0 100%;
-            background-image: linear-gradient(var(--gold-light), var(--gold-dark)), linear-gradient(var(--gold-light), var(--gold-dark)), linear-gradient(var(--gold-light), var(--gold-dark)), linear-gradient(var(--gold-light), var(--gold-dark));
-            animation: rotate-border 4s linear infinite;
-            opacity: 0;
-            transition: opacity 0.4s ease;
-        }
-        .link-card:hover::before { opacity: 1; }
-        @keyframes rotate-border { 100% { transform: rotate(360deg); } }
-        
-        .link-card-inner {
-            position: absolute; content: ''; top: 1px; left: 1px; right: 1px; bottom: 1px;
-            background-color: #111; /* Match card bg */
-            background-image: inherit; /* Inherit noise texture */
-            border-radius: 0.9rem; z-index: 0;
-        }
+    /* SVG icon common */
+    svg.icon{width:36px;height:36px; display:block}
+    svg.icon .g{fill:url(#goldGrad)}
 
-        .card-content {
-            position: relative; z-index: 2; display: flex; align-items: center;
-            justify-content: flex-start; gap: 1.5rem; width: 100%;
-        }
-        
-        /* Larger, more prominent Golden Icons */
-        .card-icon {
-            font-size: 2.5rem; /* Increased size */
-            width: 50px; text-align: center;
-            background: linear-gradient(135deg, #FFEAB5, var(--gold-light), #B58C11);
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-            text-shadow: 0 0 20px rgba(255, 215, 0, 0.6);
-            transition: all 0.3s ease;
-        }
-        .link-card:hover .card-icon {
-            transform: scale(1.1);
-            filter: brightness(1.2);
-        }
-
-        .card-text {
-            font-size: 1.2rem; /* Increased font size */
-            font-weight: 600; flex-grow: 1; text-align: center;
-        }
-        .card-arrow {
-            font-size: 1.1rem; color: var(--gold-dark); transition: all 0.3s ease;
-        }
-        .link-card:hover .card-arrow {
-            color: var(--gold-light); transform: translateX(-3px);
-        }
-    </style>
-</head>
+    /* responsive */
+    @media (max-width:420px){ .logo{width:92px;height:92px} .brand h1{font-size:22px} }
+  </style>  <!-- Inline SVG gradient sprite -->  <svg aria-hidden="true" style="position:absolute; width:0; height:0; overflow:hidden;" focusable="false">
+    <defs>
+      <linearGradient id="goldGrad" x1="0" x2="1">
+        <stop offset="0%" stop-color="#FFF7D9"/>
+        <stop offset="50%" stop-color="#FFD966"/>
+        <stop offset="100%" stop-color="#C08600"/>
+      </linearGradient>
+    </defs>
+  </svg></head>
 <body>
+  <main class="frame" id="main">
+    <div class="card-wrap">
+      <header class="header" role="banner">
+        <div class="logo" aria-hidden="true">
+          <!-- Put your round logo image as lara_logo.png next to index.html -->
+          <img src="lara_logo.png" alt="Lara Hijab logo" onerror="this.style.opacity=0.9;">
+        </div>
+        <div class="brand">
+          <h1>Lara Hijab</h1>
+          <p>Elegance in modest wear. Contact, map and social links.</p>
+        </div>
+      </header><nav class="links" aria-label="Lara Hijab quick links" id="links"></nav>
 
-    <main class="main-content">
-        
-        <header class="profile-header" data-aos="fade-down">
-            <div class="logo-container">
-                <img src="lara_logo.png" alt="Lara Hijab Logo">
-            </div>
-            <h1 class="brand-title">Lara Hijab</h1>
-            <p class="text-xl mt-2 text-gray-400">فخامة لا مثيل لها.</p>
-        </header>
+  <footer style="color:var(--muted); font-size:13px; text-align:center; padding:12px">Built for fast stable hosting on GitHub Pages. Use CNAME for custom domain.</footer>
+</div>
 
-        <section id="links-container" class="links-container">
-            </section>
+  </main>  <script>
+    // Data: edit URLs and labels as needed
+    const LINKS = [
+      { id:'tiktok', title:'TikTok', subtitle:'@lara.hijab.jilbab', href:'https://www.tiktok.com/@lara.hijab.jilbab', svg:'<svg class="icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path class="g" d="M12 2v10.5a3.5 3.5 0 1 0 3.5 3.5V8.5h2.5V5.3A7 7 0 1 1 12 2z"/></svg>' },
+      { id:'instagram', title:'Instagram', subtitle:'@lara.hijab.jilbab', href:'https://www.instagram.com/lara.hijab.jilbab', svg:'<svg class="icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><rect class="g" x="3" y="3" width="18" height="18" rx="5"/></svg>' },
+      { id:'facebook', title:'Facebook', subtitle:'/lara.hijab', href:'https://www.facebook.com/share/15DRYooPtrs/', svg:'<svg class="icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path class="g" d="M15 3h3v3h-2a2 2 0 0 0-2 2v2h4l-1 4h-3v8h-4v-8H8v-4h3V8a4 4 0 0 1 4-4z"/></svg>' },
+      { id:'map', title:'Our Location', subtitle:'Open in maps', href:'https://maps.app.goo.gl/5QFSA5LxLXvRsvjSA', svg:'<svg class="icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path class="g" d="M12 2C8 2 5 5 5 9c0 6 7 11 7 11s7-5 7-11c0-4-3-7-7-7zM12 11.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg>' },
+      { id:'tel', title:'Call Us', subtitle:'+213 652 386 525', href:'tel:0652386525', svg:'<svg class="icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path class="g" d="M6.6 10.2a15.1 15.1 0 0 0 7.3 7.3l1.9-1.9a1.2 1.2 0 0 1 1.1-.3c1.2.3 2.5.5 3.9.5a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1C9.1 21 3 14.9 3 6a1 1 0 0 1 1-1h2.5a1 1 0 0 1 1 1c0 1.4.2 2.7.5 3.9.1.4 0 .9-.3 1.1L6.6 10.2z"/></svg>' }
+    ];
 
-    </main>
+    function buildLinks(){
+      const container = document.getElementById('links');
+      container.innerHTML = '';
+      LINKS.forEach(link => {
+        const a = document.createElement('a');
+        a.className = 'link-card';
+        a.href = link.href;
+        a.target = '_blank';
+        a.rel = 'noopener noreferrer';
+        a.setAttribute('aria-label', `${link.title} - ${link.subtitle}`);
 
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script>
-        AOS.init({ once: true, duration: 900, easing: 'ease-out-cubic' });
+        a.innerHTML = `
+          <span class="icon-wrap" aria-hidden="true">${link.svg}</span>
+          <div class="content">
+            <div class="title">${link.title}</div>
+            <div class="meta">${link.subtitle}</div>
+          </div>
+          <div class="chev" aria-hidden="true">›</div>
+        `;
+        container.appendChild(a);
+      });
+    }
 
-        document.addEventListener('DOMContentLoaded', () => {
-            const linksContainer = document.getElementById('links-container');
-            const socialPlatforms = [
-                { name: 'تيك توك', url: 'https://www.tiktok.com/@lara.hijab.jilbab', icon: 'fa-brands fa-tiktok' },
-                { name: 'انستغرام', url: 'https://www.instagram.com/lara.hijab.jilbab', icon: 'fa-brands fa-instagram' },
-                { name: 'فيسبوك', url: 'https://www.facebook.com/share/15DRYooPtrs/', icon: 'fa-brands fa-facebook' },
-                { name: 'موقعنا على الخريطة', url: 'https://maps.app.goo.gl/5QFSA5LxLXvRsvjSA', icon: 'fa-solid fa-map-location-dot' },
-                { name: 'اتصال مباشر', url: 'tel:0652386525', icon: 'fa-solid fa-phone-volume' }
-            ];
+    // Small test suite. Open devtools console and call runPageTests().
+    function runPageTests(){
+      const results = { totalCards:0, accessibleLabels:true, hrefSchemes:[], notes:[] };
+      const cards = document.querySelectorAll('.link-card');
+      results.totalCards = cards.length;
+      cards.forEach(c=>{
+        if(!c.getAttribute('aria-label')) results.accessibleLabels=false;
+        const href = c.getAttribute('href') || '';
+        const scheme = href.split(':')[0];
+        results.hrefSchemes.push(scheme);
+        if(href.includes('tel:') && !/\d{6,}/.test(href)) results.notes.push('tel link might be malformed');
+      });
+      console.log('✅ runPageTests results:', results);
+      return results;
+    }
 
-            let animationDelay = 200;
-            socialPlatforms.forEach(platform => {
-                const card = document.createElement('a');
-                card.href = platform.url;
-                card.target = '_blank';
-                card.rel = 'noopener noreferrer';
-                card.className = 'link-card';
-                card.setAttribute('data-aos', 'fade-up');
-                card.setAttribute('data-aos-delay', animationDelay);
+    // Auto-build on load
+    document.addEventListener('DOMContentLoaded', ()=>{
+      buildLinks();
+      // small visual entrance
+      document.getElementById('main').style.opacity = 0;
+      requestAnimationFrame(()=> requestAnimationFrame(()=> document.getElementById('main').style.transition='opacity 420ms', document.getElementById('main').style.opacity=1));
+    });
 
-                // This structure is for the animated border to work correctly
-                card.innerHTML = `
-                    <div class="link-card-inner"></div>
-                    <div class="card-content">
-                        <i class="${platform.icon} card-icon"></i>
-                        <span class="card-text">${platform.name}</span>
-                        <i class="fa-solid fa-chevron-left card-arrow"></i>
-                    </div>
-                `;
-                
-                linksContainer.appendChild(card);
-                animationDelay += 100;
-            });
-        });
-    </script>
-</body>
+    // Expose for manual usage
+    window.runPageTests = runPageTests;
+
+  </script>  <!--
+    Deployment notes:
+      1) Add a CNAME file with your custom domain to the repository root to keep your branded URL.
+      2) In repo Settings -> Pages choose branch main / root and wait for published status.
+      3) To keep backups create a GitHub Action to push to backup repo on each push.
+
+    Quick GitHub Action snippet for mirror (add as .github/workflows/mirror.yml):
+    name: Mirror
+    on: [push]
+    jobs:
+      mirror:
+        runs-on: ubuntu-latest
+        steps:
+          - uses: actions/checkout@v4
+            with: { fetch-depth: 0 }
+          - run: |
+              git remote add backup https://<TOKEN>@github.com/ME/backup-repo.git
+              git push --mirror backup
+
+    Tests: open the page, devtools Console, run: runPageTests()
+  --></body>
 </html>
