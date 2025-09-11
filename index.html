@@ -1,108 +1,127 @@
 <!doctype html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="description" content="Lara Hijab — أزياء شرعية أنيقة. تواصلوا معنا عبر الروابط والخريطة.">
-  <meta name="theme-color" content="#0b0b0b">
-  <title>Lara Hijab — روابط</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Lara Hijab | فخامة الحجاب برونق عصري</title>
+  <meta name="description" content="Lara Hijab — فخامة الحجاب برونق عصري. روابط، خرائط، واتساب." />
+  <meta name="theme-color" content="#0b0b0b" />
 
-  <!-- خطوط -->
-  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;600;700;800&family=El+Messiri:wght@500;700&display=swap" rel="stylesheet">  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;600;700&family=El+Messiri:wght@500;700&display=swap" rel="stylesheet" />
 
   <style>
     :root{
       --bg:#040404;
-      --card-bg:rgba(18,18,18,0.72);
-      --muted:#cfcfcf;
+      --card:#0f0f0f;
+      --muted:#bfbfbf;
       --gold1:#FFD966;
       --gold2:#C08600;
+      --accent:linear-gradient(90deg,var(--gold1),#FFF6D6,var(--gold1));
       --radius:14px;
-      --maxw:520px;
-      --transition:260ms cubic-bezier(.2,.9,.3,1);
+      --maxw:780px;
+      --glass:rgba(255,255,255,0.03);
+      --speed:300ms;
     }
+    html,body{height:100%}
     *{box-sizing:border-box}
     body{
-      margin:0; min-height:100vh;
-      background:var(--bg);
-      color:#eee; font-family:'Tajawal',system-ui;
-      display:grid; place-items:center; padding:28px; line-height:1.5;
+      margin:0; background:var(--bg); color:#fff; font-family:"Tajawal",system-ui,Arial;
+      -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
+      display:flex; align-items:center; justify-content:center; padding:28px;
       overflow:hidden;
     }
 
-    /* خلفية متحركة */
+    /* layout */
+    .site{width:100%; max-width:var(--maxw); position:relative; padding:24px; border-radius:18px;}
+    .panel{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.35)); backdrop-filter:blur(6px);
+      border-radius:12px; padding:20px; box-shadow:0 10px 40px rgba(0,0,0,0.7); border:1px solid rgba(255,215,0,0.04);
+    }
+
+    /* top controls */
+    #lang-toggle{position:fixed; top:14px; right:14px; z-index:60;
+      background:var(--card); border:1px solid rgba(255,215,0,0.12); color:var(--gold1);
+      padding:6px 10px; border-radius:10px; cursor:pointer; font-weight:600; font-size:13px;
+      transition:transform var(--speed), background var(--speed);
+    }
+    #lang-toggle:hover{transform:translateY(-2px); background:rgba(255,215,0,0.06)}
+
+    /* decorative background glow */
     body::before{
-      content:""; position:fixed; inset:0;
-      background:radial-gradient(circle at 20% 20%, rgba(255,217,102,0.12), transparent 40%),
-                 radial-gradient(circle at 80% 80%, rgba(192,134,0,0.08), transparent 40%);
-      animation:moveBg 12s infinite alternate ease-in-out;
-      z-index:-2;
+      content:""; position:fixed; inset: -10% -10%;
+      background:
+        radial-gradient(600px 400px at 10% 10%, rgba(255,217,102,0.08), transparent 20%),
+        radial-gradient(500px 300px at 90% 85%, rgba(192,134,0,0.06), transparent 12%);
+      z-index:-3; filter:blur(18px); animation: drift 18s ease-in-out infinite alternate;
     }
-    @keyframes moveBg{
-      from{transform:translate(-20px,-20px);}
-      to{transform:translate(20px,20px);}
+    @keyframes drift{from{transform:translate(-10px,-8px)} to{transform:translate(12px,10px)}}
+
+    /* particles canvas sits behind panel */
+    canvas#particles{position:fixed; inset:0; z-index:-2; display:block}
+
+    /* header */
+    .header{display:flex; gap:16px; align-items:center}
+    .logo{width:92px;height:92px;border-radius:999px;display:grid;place-items:center;
+      border:2px solid rgba(255,215,0,0.08); background:linear-gradient(180deg, rgba(255,230,170,0.03), rgba(0,0,0,0.15));
+      box-shadow:0 8px 30px rgba(255,200,50,0.04) inset, 0 12px 30px rgba(0,0,0,0.6);
+      transition:box-shadow 1.6s ease-in-out;
     }
+    .logo:hover{box-shadow:0 18px 50px rgba(255,200,50,0.12)}
 
-    canvas#particles{position:fixed; inset:0; z-index:-1;}
-
-    .frame{width:100%; max-width:var(--maxw);}
-    .card-wrap{display:flex; flex-direction:column; gap:22px}
-
-    /* Header */
-    .header{display:flex; align-items:center; gap:16px; padding:18px;}
-    .logo{width:100px; height:100px; border-radius:50%; display:grid;place-items:center;
-      border:1px solid rgba(255,215,0,0.08); background:rgba(255,230,170,0.05);
-      animation:pulseGlow 4s infinite ease-in-out;
-    }
-    .logo img{width:70px; height:70px; border-radius:50%}
-    .brand h1{margin:0; font-family:'El Messiri'; font-size:26px;
-      background:linear-gradient(90deg,var(--gold1),#FFF6D6,var(--gold1));
-      -webkit-background-clip:text; -webkit-text-fill-color:transparent;
+    .brand h1{margin:0; font-family:"El Messiri"; font-size:28px;
+      background:var(--accent); -webkit-background-clip:text; -webkit-text-fill-color:transparent;
+      text-shadow:0 0 24px rgba(255,200,50,0.06);
     }
     .brand p{margin:6px 0 0;color:var(--muted); font-size:14px}
 
-    @keyframes pulseGlow{
-      0%,100%{box-shadow:0 0 8px rgba(255,217,102,0.4);}
-      50%{box-shadow:0 0 20px rgba(255,217,102,0.8);}
+    /* links */
+    .links{margin-top:18px; display:grid; gap:12px}
+    .card{
+      display:flex; align-items:center; gap:12px; padding:14px; border-radius:12px;
+      background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.3));
+      border:1px solid rgba(255,215,0,0.04); transition:transform 260ms cubic-bezier(.2,.9,.3,1), box-shadow 260ms;
+      text-decoration:none; color:inherit; overflow:hidden; position:relative;
+    }
+    .card::before{
+      content:""; position:absolute; inset:-40%; z-index:0; background:conic-gradient(from 120deg at 50% 50%, rgba(255,215,0,0.06), rgba(192,120,0,0.04));
+      opacity:0; transform:rotate(0deg); transition:opacity 260ms, transform 900ms;
+    }
+    .card:hover::before{opacity:1; transform:rotate(40deg)}
+    .card:hover{transform:translateY(-6px); box-shadow:0 20px 40px rgba(0,0,0,0.6)}
+
+    .iconWrap{width:54px;height:54px;flex:0 0 54px;display:grid;place-items:center;z-index:2}
+    .metaWrap{z-index:2}
+    .title{font-weight:700}
+    .sub{color:var(--muted); font-size:13px}
+
+    .chev{margin-inline-start:auto; color:var(--gold2); font-weight:700; z-index:2}
+
+    /* footer */
+    .foot{margin-top:18px;color:var(--muted); font-size:13px; text-align:center}
+
+    /* reveal animations via class */
+    .reveal{opacity:0; transform:translateY(12px); transition:opacity 520ms ease, transform 520ms ease}
+    .reveal.visible{opacity:1; transform:translateY(0)}
+
+    /* accessibility and reduce motion */
+    @media (prefers-reduced-motion: reduce){
+      body::before, .logo, .card, canvas#particles{animation:none; transition:none}
     }
 
-    /* Links */
-    .links{display:flex; flex-direction:column; gap:12px; padding:6px}
-    .link-card{
-      display:flex; align-items:center; gap:14px; padding:14px; text-decoration:none; color:inherit;
-      background:var(--card-bg); border-radius:var(--radius);
-      border:1px solid rgba(255,215,0,0.06); backdrop-filter:blur(8px);
-      transition:transform var(--transition), box-shadow var(--transition);
+    /* responsive */
+    @media (max-width:620px){
+      .site{padding:12px}
+      .brand h1{font-size:22px}
+      .logo{width:80px;height:80px}
     }
-    .link-card:hover{
-      transform:translateX(-6px) scale(1.02);
-      box-shadow:0 14px 30px rgba(255,217,102,0.25);
-    }
-    .icon-wrap{width:50px; height:50px; flex:0 0 50px; display:grid; place-items:center}
-    .title{font-weight:700; font-size:16px}
-    .meta{font-size:13px; color:var(--muted)}
-    .chev{margin-inline-start:auto; color:var(--gold2)}
-
-    svg.icon{width:32px;height:32px;display:block}
-    svg.icon .g{fill:url(#goldGrad)}
-
-    /* زر الترجمة */
-    #lang-btn{
-      position:fixed; top:12px; right:12px; z-index:10;
-      background:var(--card-bg); border:1px solid var(--gold2);
-      border-radius:8px; padding:6px 12px;
-      font-size:13px; color:var(--gold1); cursor:pointer;
-      transition:background var(--transition), transform var(--transition);
-    }
-    #lang-btn:hover{background:rgba(255,217,102,0.15); transform:scale(1.05);}
-
-    @media(max-width:420px){ .logo{width:85px;height:85px} .brand h1{font-size:22px} }
   </style>
 
-  <!-- SVG Gradient -->
-  <svg aria-hidden="true" style="position:absolute; width:0; height:0;">
+  <!-- gold gradient defs for inline SVG icons -->
+  <svg aria-hidden="true" style="position:absolute;width:0;height:0;overflow:hidden">
     <defs>
-      <linearGradient id="goldGrad" x1="0" x2="1">
+      <linearGradient id="gld" x1="0" x2="1">
         <stop offset="0%" stop-color="#FFF7D9"/>
         <stop offset="50%" stop-color="#FFD966"/>
         <stop offset="100%" stop-color="#C08600"/>
@@ -111,125 +130,169 @@
   </svg>
 </head>
 <body>
-  <!-- زر الترجمة -->
-  <button id="lang-btn">EN</button>
-  <canvas id="particles"></canvas>
 
-  <main class="frame" id="main">
-    <div class="card-wrap">
-      <header class="header">
-        <div class="logo">
-          <img src="lara_logo.png" alt="شعار لارا حجاب">
-        </div>
-        <div class="brand">
-          <h1 id="title">Lara Hijab</h1>
-          <p id="subtitle">أزياء شرعية أنيقة — روابط للتواصل والخريطة</p>
-        </div>
-      </header>
+<button id="lang-toggle" aria-label="تبديل اللغة">EN</button>
 
-      <nav class="links" id="links"></nav>
+<canvas id="particles" aria-hidden="true"></canvas>
 
-      <footer style="color:var(--muted); font-size:13px; text-align:center; padding:12px">
-        © 2025 Lara Hijab 
-      </footer>
+<div class="site panel" role="main" aria-labelledby="brand-title">
+  <div class="header">
+    <div class="logo" aria-hidden="true">
+      <!-- put lara_logo.png next to this file -->
+      <img src="lara_logo.png" alt="Lara Hijab" style="width:66px;height:66px;border-radius:50%">
     </div>
-  </main>
+    <div class="brand">
+      <h1 id="brand-title">Lara Hijab</h1>
+      <p id="brand-sub">فخامة الحجاب برونق عصري</p>
+    </div>
+  </div>
 
-  <script>
-    const LINKS = {
-      ar:[
-        {id:'tiktok', title:'تيك توك', subtitle:'@lara.hijab.jilbab', href:'https://www.tiktok.com/@lara.hijab.jilbab',
-          svg:'<svg class="icon" viewBox="0 0 24 24"><path class="g" d="M12 2v10.5a3.5 3.5 0 1 0 3.5 3.5V8.5h2.5V5.3A7 7 0 1 1 12 2z"/></svg>'},
-        {id:'instagram', title:'إنستغرام', subtitle:'@lara.hijab.jilbab', href:'https://www.instagram.com/lara.hijab.jilbab',
-          svg:'<svg class="icon" viewBox="0 0 24 24"><circle class="g" cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3" fill="white"/></svg>'},
-        {id:'facebook', title:'فيسبوك', subtitle:'/lara.hijab', href:'https://www.facebook.com/share/15DRYooPtrs/',
-          svg:'<svg class="icon" viewBox="0 0 24 24"><path class="g" d="M15 3h3v3h-2a2 2 0 0 0-2 2v2h4l-1 4h-3v8h-4v-8H8v-4h3V8a4 4 0 0 1 4-4z"/></svg>'},
-        {id:'map', title:'موقعنا', subtitle:'عرض على الخريطة', href:'https://maps.app.goo.gl/5QFSA5LxLXvRsvjSA',
-          svg:'<svg class="icon" viewBox="0 0 24 24"><path class="g" d="M12 2C8 2 5 5 5 9c0 6 7 11 7 11s7-5 7-11c0-4-3-7-7-7zM12 11.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg>'},
-        {id:'tel', title:'اتصل بنا', subtitle:'+213652386525', href:'tel:+213652386525',
-          svg:'<svg class="icon" viewBox="0 0 24 24"><path class="g" d="M6.6 10.2a15.1 15.1 0 0 0 7.3 7.3l1.9-1.9a1.2 1.2 0 0 1 1.1-.3c1.2.3 2.5.5 3.9.5a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1C9.1 21 3 14.9 3 6a1 1 0 0 1 1-1h2.5a1 1 0 0 1 1 1c0 1.4.2 2.7.5 3.9.1.4 0 .9-.3 1.1L6.6 10.2z"/></svg>'}
-      ],
-      en:[
-        {id:'tiktok', title:'TikTok', subtitle:'@lara.hijab.jilbab', href:'https://www.tiktok.com/@lara.hijab.jilbab',
-          svg:'<svg class="icon" viewBox="0 0 24 24"><path class="g" d="M12 2v10.5a3.5 3.5 0 1 0 3.5 3.5V8.5h2.5V5.3A7 7 0 1 1 12 2z"/></svg>'},
-        {id:'instagram', title:'Instagram', subtitle:'@lara.hijab.jilbab', href:'https://www.instagram.com/lara.hijab.jilbab',
-          svg:'<svg class="icon" viewBox="0 0 24 24"><circle class="g" cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3" fill="white"/></svg>'},
-        {id:'facebook', title:'Facebook', subtitle:'/lara.hijab', href:'https://www.facebook.com/share/15DRYooPtrs/',
-          svg:'<svg class="icon" viewBox="0 0 24 24"><path class="g" d="M15 3h3v3h-2a2 2 0 0 0-2 2v2h4l-1 4h-3v8h-4v-8H8v-4h3V8a4 4 0 0 1 4-4z"/></svg>'},
-        {id:'map', title:'Our Location', subtitle:'View on Map', href:'https://maps.app.goo.gl/5QFSA5LxLXvRsvjSA',
-          svg:'<svg class="icon" viewBox="0 0 24 24"><path class="g" d="M12 2C8 2 5 5 5 9c0 6 7 11 7 11s7-5 7-11c0-4-3-7-7-7zM12 11.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg>'},
-        {id:'tel', title:'Call Us', subtitle:'+213652386525', href:'tel:+213652386525',
-          svg:'<svg class="icon" viewBox="0 0 24 24"><path class="g" d="M6.6 10.2a15.1 15.1 0 0 0 7.3 7.3l1.9-1.9a1.2 1.2 0 0 1 1.1-.3c1.2.3 2.5.5 3.9.5a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1C9.1 21 3 14.9 3 6a1 1 0 0 1 1-1h2.5a1 1 0 0 1 1 1c0 1.4.2 2.7.5 3.9.1.4 0 .9-.3 1.1L6.6 10.2z"/></svg>'}
-      ]
-    };
+  <div class="links" id="links" aria-live="polite"></div>
 
-    let currentLang='ar';
-    const btn=document.getElementById('lang-btn');
-    const title=document.getElementById('title');
-    const subtitle=document.getElementById('subtitle');
-    const links=document.getElementById('links');
+  <div class="foot" id="foot">© 2025 Lara Hijab </div>
+</div>
 
-    function buildLinks(lang){
-      links.innerHTML='';
-      LINKS[lang].forEach(link=>{
-        const a=document.createElement('a');
-        a.className='link-card'; a.href=link.href; a.target='_blank'; a.rel='noopener';
-        a.innerHTML=`
-          <span class="icon-wrap">${link.svg}</span>
-          <div><div class="title">${link.title}</div><div class="meta">${link.subtitle}</div></div>
-          <div class="chev">›</div>`;
-        links.appendChild(a);
-      });
-    }
+<script>
+/* ---------- content (ar/en) ---------- */
+const CONTENT = {
+  ar:{
+    title:"Lara Hijab",
+    sub:"فخامة الحجاب برونق عصري",
+    links:[
+      {id:'tiktok', title:'تيك توك', sub:'@lara.hijab.jilbab', href:'https://www.tiktok.com/@lara.hijab.jilbab', icon:'<path d=\"M12 2v10.5a3.5 3.5 0 1 0 3.5 3.5V8.5h2.5V5.3A7 7 0 1 1 12 2z\"/>'},
+      {id:'instagram', title:'إنستغرام', sub:'@lara.hijab.jilbab', href:'https://www.instagram.com/lara.hijab.jilbab', icon:'<rect x=\"3\" y=\"3\" width=\"18\" height=\"18\" rx=\"5\"/>'},
+      {id:'facebook', title:'فيسبوك', sub:'/lara.hijab', href:'https://www.facebook.com/share/15DRYooPtrs/', icon:'<path d=\"M15 3h3v3h-2a2 2 0 0 0-2 2v2h4l-1 4h-3v8h-4v-8H8v-4h3V8a4 4 0 0 1 4-4z\"/>'},
+      {id:'map', title:'موقعنا', sub:'افتح في الخرائط', href:'https://maps.app.goo.gl/5QFSA5LxLXvRsvjSA', icon:'<path d=\"M12 2C8 2 5 5 5 9c0 6 7 11 7 11s7-5 7-11c0-4-3-7-7-7zM12 11.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z\"/>'},
+      {id:'tel', title:'اتصل بنا', sub:'+213 652 386 525', href:'tel:+213652386525', icon:'<path d=\"M6.6 10.2a15.1 15.1 0 0 0 7.3 7.3l1.9-1.9a1.2 1.2 0 0 1 1.1-.3c1.2.3 2.5.5 3.9.5a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1C9.1 21 3 14.9 3 6a1 1 0 0 1 1-1h2.5a1 1 0 0 1 1 1c0 1.4.2 2.7.5 3.9.1.4 0 .9-.3 1.1L6.6 10.2z\"/>'}
+    ]
+  },
+  en:{
+    title:"Lara Hijab",
+    sub:"Elegant Modest Wear",
+    links:[
+      {id:'tiktok', title:'TikTok', sub:'@lara.hijab.jilbab', href:'https://www.tiktok.com/@lara.hijab.jilbab', icon:'<path d=\"M12 2v10.5a3.5 3.5 0 1 0 3.5 3.5V8.5h2.5V5.3A7 7 0 1 1 12 2z\"/>'},
+      {id:'instagram', title:'Instagram', sub:'@lara.hijab.jilbab', href:'https://www.instagram.com/lara.hijab.jilbab', icon:'<rect x=\"3\" y=\"3\" width=\"18\" height=\"18\" rx=\"5\"/>'},
+      {id:'facebook', title:'Facebook', sub:'/lara.hijab', href:'https://www.facebook.com/share/15DRYooPtrs/', icon:'<path d=\"M15 3h3v3h-2a2 2 0 0 0-2 2v2h4l-1 4h-3v8h-4v-8H8v-4h3V8a4 4 0 0 1 4-4z\"/>'},
+      {id:'map', title:'Our Location', sub:'View on Map', href:'https://maps.app.goo.gl/5QFSA5LxLXvRsvjSA', icon:'<path d=\"M12 2C8 2 5 5 5 9c0 6 7 11 7 11s7-5 7-11c0-4-3-7-7-7zM12 11.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z\"/>'},
+      {id:'tel', title:'Call Us', sub:'+213 652 386 525', href:'tel:+213652386525', icon:'<path d=\"M6.6 10.2a15.1 15.1 0 0 0 7.3 7.3l1.9-1.9a1.2 1.2 0 0 1 1.1-.3c1.2.3 2.5.5 3.9.5a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1C9.1 21 3 14.9 3 6a1 1 0 0 1 1-1h2.5a1 1 0 0 1 1 1c0 1.4.2 2.7.5 3.9.1.4 0 .9-.3 1.1L6.6 10.2z\"/>'}
+    ]
+  }
+};
 
-    btn.onclick=()=>{
-      currentLang=currentLang==='ar'?'en':'ar';
-      if(currentLang==='ar'){
-        btn.textContent='EN';
-        title.textContent='Lara Hijab';
-        subtitle.textContent='أزياء شرعية أنيقة — روابط للتواصل والخريطة';
-      }else{
-        btn.textContent='AR';
-        title.textContent='Lara Hijab';
-        subtitle.textContent='Elegant Modest Wear — Links & Map';
-      }
-      buildLinks(currentLang);
-    };
+/* ---------- small utilities ---------- */
+const linksEl = document.getElementById('links');
+const langBtn = document.getElementById('lang-toggle');
+const brandTitle = document.getElementById('brand-title');
+const brandSub = document.getElementById('brand-sub');
 
-    document.addEventListener('DOMContentLoaded',()=>{
-      buildLinks('ar');
+let lang = 'ar';
+
+function createIcon(svgContent){
+  return `<svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><g fill="url(#gld)">${svgContent}</g></svg>`;
+}
+
+function build(){
+  // header
+  brandTitle.textContent = CONTENT[lang].title;
+  brandSub.textContent = CONTENT[lang].sub;
+  // links
+  linksEl.innerHTML = '';
+  CONTENT[lang].links.forEach((it, idx) => {
+    const card = document.createElement('a');
+    card.className = 'card reveal';
+    card.href = it.href;
+    card.target = '_blank';
+    card.rel = 'noopener noreferrer';
+    card.setAttribute('aria-label', `${it.title} - ${it.sub}`);
+    card.innerHTML = `
+      <span class="iconWrap" aria-hidden="true">${createIcon(it.icon)}</span>
+      <div class="metaWrap"><div class="title">${it.title}</div><div class="sub">${it.sub}</div></div>
+      <div class="chev">›</div>
+    `;
+    linksEl.appendChild(card);
+  });
+  // reveal observer
+  observeReveal();
+  // update lang button label
+  langBtn.textContent = (lang === 'ar') ? 'EN' : 'AR';
+  // update html dir/lang
+  document.documentElement.lang = (lang === 'ar') ? 'ar' : 'en';
+  document.documentElement.dir = (lang === 'ar') ? 'rtl' : 'ltr';
+}
+
+/* ---------- reveal on scroll ---------- */
+function observeReveal(){
+  const items = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(en => {
+      if(en.isIntersecting) en.target.classList.add('visible');
     });
+  }, {threshold: 0.15, rootMargin: '0px 0px -6% 0px'});
+  items.forEach(i => { i.classList.remove('visible'); io.observe(i); });
+}
 
-    /* خلفية Particles */
-    const canvas=document.getElementById('particles');
-    const ctx=canvas.getContext('2d');
-    let w,h,particles=[];
-    function resize(){
-      w=canvas.width=window.innerWidth;
-      h=canvas.height=window.innerHeight;
-    }
-    window.addEventListener('resize',resize);
-    function init(){
-      resize();
-      particles=[];
-      for(let i=0;i<80;i++){
-        particles.push({x:Math.random()*w,y:Math.random()*h,dx:(Math.random()-0.5)*0.4,dy:(Math.random()-0.5)*0.4,r:Math.random()*2+1});
-      }
-    }
-    function draw(){
-      ctx.clearRect(0,0,w,h);
-      ctx.fillStyle='rgba(255,217,102,0.7)';
-      particles.forEach(p=>{
-        ctx.beginPath();
-        ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
-        ctx.fill();
-        p.x+=p.dx; p.y+=p.dy;
-        if(p.x<0||p.x>w) p.dx*=-1;
-        if(p.y<0||p.y>h) p.dy*=-1;
-      });
-      requestAnimationFrame(draw);
-    }
-    init(); draw();
-  </script>
+/* ---------- language toggle ---------- */
+langBtn.addEventListener('click', () => {
+  lang = (lang === 'ar') ? 'en' : 'ar';
+  build();
+});
+
+/* ---------- particles (lightweight canvas) ---------- */
+const canvas = document.getElementById('particles');
+const ctx = canvas.getContext('2d');
+let W, H, parts = [];
+function resize(){ W = canvas.width = window.innerWidth; H = canvas.height = window.innerHeight; }
+function initParticles(){
+  parts = [];
+  const count = Math.round(Math.min(W * H / 30000, 120));
+  for(let i=0;i<count;i++){
+    parts.push({
+      x: Math.random()*W,
+      y: Math.random()*H,
+      r: Math.random()*1.8 + 0.6,
+      vx: (Math.random()-0.5)*0.3,
+      vy: (Math.random()-0.5)*0.3,
+      alpha: Math.random()*0.6 + 0.12
+    });
+  }
+}
+function drawParticles(){
+  ctx.clearRect(0,0,W,H);
+  parts.forEach(p=>{
+    ctx.beginPath();
+    ctx.fillStyle = `rgba(255,217,102,${p.alpha})`;
+    ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+    ctx.fill();
+    p.x += p.vx; p.y += p.vy;
+    if(p.x < -10) p.x = W + 10;
+    if(p.x > W + 10) p.x = -10;
+    if(p.y < -10) p.y = H + 10;
+    if(p.y > H + 10) p.y = -10;
+  });
+  requestAnimationFrame(drawParticles);
+}
+window.addEventListener('resize', () => { resize(); initParticles(); });
+resize(); initParticles(); drawParticles();
+
+/* ---------- init ---------- */
+document.addEventListener('DOMContentLoaded', () => {
+  build();
+  // fade-in site panel
+  const site = document.querySelector('.site');
+  site.style.opacity = 0;
+  setTimeout(()=> site.style.transition='opacity 520ms ease', 10);
+  setTimeout(()=> site.style.opacity = 1, 20);
+  // small keyboard accessibility: toggle language via L key
+  window.addEventListener('keydown', (e) => { if(e.key.toLowerCase() === 'l') langBtn.click(); });
+});
+
+/* ---------- small QA helper (console) ---------- */
+window.runPageTests = function(){
+  return {
+    lang, links: document.querySelectorAll('.card').length,
+    telOK: document.querySelectorAll('a[href^=\"tel:\"]').length > 0
+  };
+};
+</script>
 </body>
 </html>
