@@ -6,259 +6,191 @@
     <title>Lara Hijab | فخامة لا مثيل لها</title>
     
     <script src="https://cdn.tailwindcss.com"></script>
-    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2g2uT2b/d8F7g1T/Ff9zO/A/n3O/Pj9M7F7gZvn1koRaSPBb+jC6UgSQA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&family=El+Messiri:wght@400;500;600;700&display=swap" rel="stylesheet">
-
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
     <style>
         :root {
-            --gold-primary: #FFD700;
-            --gold-secondary: #DAA520;
-            --gold-glow: rgba(255, 215, 0, 0.4);
-            --black-bg: #0A0A0A;
-            --card-bg: rgba(0, 0, 0, 0.4);
-            --border-glow: rgba(255, 215, 0, 0.3);
-            --text-light: #F0F0F0;
-            --whatsapp-green: #25D366;
-            --whatsapp-dark: #128C7E;
+            --gold-light: #FFD700;
+            --gold-dark: #B8860B;
+            --black-primary: #000000;
+            --card-bg: rgba(22, 22, 22, 0.7);
+            --border-color: rgba(255, 215, 0, 0.2);
+            --text-light: #F5F5F5;
         }
 
         body {
             font-family: 'Tajawal', sans-serif;
-            background-color: var(--black-bg);
+            background-color: var(--black-primary);
             color: var(--text-light);
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            display: grid;
+            place-items: center;
             min-height: 100vh;
             padding: 2rem 1rem;
-            position: relative;
-            overflow-x: hidden;
+            background-image: radial-gradient(circle at center, rgba(40,30,0,0.3) 0%, var(--black-primary) 70%);
         }
 
-        /* Subtle background pattern for depth */
-        .background-pattern {
-            position: fixed;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            z-index: 0;
-            opacity: 0.1;
-            background: radial-gradient(circle, rgba(255, 215, 0, 0.05) 1px, transparent 1px);
-            background-size: 20px 20px;
-        }
-
-        /* Main content container */
-        .main-content-wrapper {
+        .main-content {
             position: relative;
             z-index: 10;
             width: 100%;
-            max-width: 400px;
+            max-width: 500px; /* Slightly wider for a better feel */
             display: flex;
             flex-direction: column;
             align-items: center;
-            text-align: center;
-            animation: fadeIn 1s ease-out;
+            gap: 2rem;
         }
 
-        /* Profile header section */
-        .profile-header {
-            margin-bottom: 2rem;
-        }
-
-        /* Logo container with the golden circle and glow */
+        /* Header & Logo */
+        .profile-header { text-align: center; }
         .logo-container {
-            position: relative;
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: radial-gradient(circle, var(--gold-primary) 0%, transparent 70%);
-            box-shadow: 0 0 50px var(--gold-glow);
-            animation: pulse-logo 3s ease-in-out infinite alternate;
-            margin-bottom: 1.5rem;
+            width: 150px; height: 150px; margin: 0 auto 1.5rem; border-radius: 50%;
+            display: grid; place-items: center;
+            background: radial-gradient(circle, rgba(255, 215, 0, 0.05) 0%, transparent 70%);
+            border: 2px solid var(--border-color);
+            box-shadow: 0 0 50px rgba(255,215,0,0.1);
         }
-        .logo-container::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 100%;
-            height: 100%;
-            border: 2px solid var(--gold-primary);
-            border-radius: 50%;
-            opacity: 0.7;
-            animation: spin 12s linear infinite;
-        }
-
-        @keyframes pulse-logo {
-            0% { box-shadow: 0 0 40px var(--gold-glow); transform: scale(1); }
-            100% { box-shadow: 0 0 70px var(--gold-glow); transform: scale(1.02); }
-        }
-        @keyframes spin {
-            from { transform: translate(-50%, -50%) rotate(0deg); }
-            to { transform: translate(-50%, -50%) rotate(360deg); }
-        }
-
         .logo-container img {
-            width: 70%;
-            height: 70%;
-            object-fit: contain;
-            border-radius: 50%;
-            filter: drop-shadow(0 0 10px var(--gold-primary));
+            width: 100px; height: 100px; object-fit: contain; border-radius: 50%;
+            filter: drop-shadow(0 0 10px var(--gold-light));
+        }
+        .brand-title {
+            font-family: 'El Messiri', serif; font-size: clamp(3rem, 10vw, 4rem); font-weight: 700;
+            background: linear-gradient(90deg, #E6BF55, #FFFBD6, #E6BF55);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 25px rgba(255, 215, 0, 0.4);
         }
 
-        .gold-text {
-            background: linear-gradient(90deg, var(--gold-primary), var(--gold-secondary));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-shadow: 0 0 6px var(--gold-glow);
-            font-family: 'El Messiri', serif;
-            font-weight: 700;
+        /* Redesigned Link Cards */
+        .links-container {
+            width: 100%; display: flex; flex-direction: column; gap: 1.25rem; /* Increased gap */
         }
-
-        /* Links and buttons styling */
-        .info-card {
-            background: var(--card-bg);
-            backdrop-filter: blur(10px);
-            border-radius: 1.5rem;
-            border: 1px solid var(--border-glow);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+        
+        .link-card {
+            position: relative; display: flex; align-items: center; width: 100%;
+            /* Increased padding for a larger, more substantial card */
+            padding: 1.5rem; 
+            text-decoration: none; color: var(--text-light);
+            background-color: var(--card-bg);
+            /* Subtle noise texture for a premium feel */
+            background-image: url('data:image/svg+xml,%3Csvg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg"%3E%3Cfilter id="noise"%3E%3CfeTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="3" stitchTiles="stitch"/%3E%3CfeColorMatrix type="saturate" values="0"/%3E%3C/filter%3E%3Crect width="100%" height="100%" filter="url(%23noise)" opacity="0.03"/%3E%3C/svg%3E');
+            border: 1px solid var(--border-color);
+            border-radius: 1rem; /* Softer radius */
+            backdrop-filter: blur(12px);
             transition: all 0.3s ease;
-            width: 100%;
-            padding: 1.5rem;
-            margin-bottom: 1.5rem;
-        }
-        .info-card:hover {
-            transform: translateY(-5px) scale(1.02);
-            box-shadow: 0 15px 35px var(--gold-glow);
+            overflow: hidden; 
         }
 
-        /* Action buttons */
-        .action-button {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 100%;
-            padding: 1rem 1.5rem;
-            border-radius: 9999px;
-            font-weight: 700;
-            gap: 1rem;
-            transition: all 0.3s ease;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        /* Animated Glowing Border Effect */
+        .link-card::before {
+            content: ''; position: absolute; z-index: -1;
+            top: -50%; left: -50%; width: 200%; height: 200%;
+            background-color: var(--black-primary);
+            background-repeat: no-repeat;
+            background-size: 50% 50%, 50% 50%;
+            background-position: 0 0, 100% 0, 100% 100%, 0 100%;
+            background-image: linear-gradient(var(--gold-light), var(--gold-dark)), linear-gradient(var(--gold-light), var(--gold-dark)), linear-gradient(var(--gold-light), var(--gold-dark)), linear-gradient(var(--gold-light), var(--gold-dark));
+            animation: rotate-border 4s linear infinite;
+            opacity: 0;
+            transition: opacity 0.4s ease;
         }
-        .action-button:hover {
-            transform: translateY(-3px) scale(1.01);
-        }
-
-        .btn-gold {
-            background: linear-gradient(45deg, var(--gold-primary), var(--gold-secondary));
-            color: var(--black-bg);
-            box-shadow: 0 6px 18px rgba(255, 215, 0, 0.4);
-        }
-        .btn-whatsapp {
-            background: linear-gradient(45deg, var(--whatsapp-green), var(--whatsapp-dark));
-            color: white;
-            box-shadow: 0 6px 18px rgba(37, 211, 102, 0.4);
+        .link-card:hover::before { opacity: 1; }
+        @keyframes rotate-border { 100% { transform: rotate(360deg); } }
+        
+        .link-card-inner {
+            position: absolute; content: ''; top: 1px; left: 1px; right: 1px; bottom: 1px;
+            background-color: #111; /* Match card bg */
+            background-image: inherit; /* Inherit noise texture */
+            border-radius: 0.9rem; z-index: 0;
         }
 
-        /* Social links styling */
-        .social-link {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            width: 100%;
-            background: var(--black-bg);
-            border: 1px solid var(--border-glow);
-            border-radius: 1rem;
-            padding: 1rem;
-            margin-bottom: 1rem;
-            text-decoration: none;
+        .card-content {
+            position: relative; z-index: 2; display: flex; align-items: center;
+            justify-content: flex-start; gap: 1.5rem; width: 100%;
+        }
+        
+        /* Larger, more prominent Golden Icons */
+        .card-icon {
+            font-size: 2.5rem; /* Increased size */
+            width: 50px; text-align: center;
+            background: linear-gradient(135deg, #FFEAB5, var(--gold-light), #B58C11);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 20px rgba(255, 215, 0, 0.6);
             transition: all 0.3s ease;
         }
-        .social-link:hover {
-            transform: translateX(5px);
-            border-color: var(--gold-primary);
+        .link-card:hover .card-icon {
+            transform: scale(1.1);
+            filter: brightness(1.2);
         }
 
-        .social-link-icon {
-            font-size: 1.8rem;
-            color: var(--gold-primary);
-            text-shadow: 0 0 10px var(--gold-glow);
+        .card-text {
+            font-size: 1.2rem; /* Increased font size */
+            font-weight: 600; flex-grow: 1; text-align: center;
         }
-
-        .social-link-name {
-            font-size: 1.2rem;
-            font-weight: 500;
-            color: var(--text-light);
-            margin-right: auto;
+        .card-arrow {
+            font-size: 1.1rem; color: var(--gold-dark); transition: all 0.3s ease;
         }
-        .social-link-arrow {
-            color: var(--gold-secondary);
-            opacity: 0.7;
+        .link-card:hover .card-arrow {
+            color: var(--gold-light); transform: translateX(-3px);
         }
     </style>
 </head>
 <body>
 
-    <div class="background-pattern"></div>
-
-    <div class="main-content-wrapper">
+    <main class="main-content">
         
-        <div class="profile-header">
+        <header class="profile-header" data-aos="fade-down">
             <div class="logo-container">
                 <img src="lara_logo.png" alt="Lara Hijab Logo">
             </div>
-            <h1 class="text-4xl gold-text">Lara Hijab</h1>
-            <p class="text-lg mt-2 text-gray-400">اللمسة الذهبية التي تبحثين عنها.</p>
-        </div>
+            <h1 class="brand-title">Lara Hijab</h1>
+            <p class="text-xl mt-2 text-gray-400">فخامة لا مثيل لها.</p>
+        </header>
 
-        <div class="info-card">
-            <h2 class="text-2xl font-bold gold-text mb-4">تواصلي معنا</h2>
-            <div class="flex flex-col sm:flex-row gap-4">
-                <a href="tel:0652386525" class="action-button btn-gold flex-1">
-                    <i class="fa-solid fa-phone"></i>
-                    <span>اتصال</span>
-                </a>
-                <a href="https://wa.me/213652386525" class="action-button btn-whatsapp flex-1">
-                    <i class="fa-brands fa-whatsapp"></i>
-                    <span>واتساب</span>
-                </a>
-            </div>
-        </div>
+        <section id="links-container" class="links-container">
+            </section>
 
-        <div id="social-links-container" class="space-y-4 w-full">
-            </div>
+    </main>
 
-    </div>
-
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
+        AOS.init({ once: true, duration: 900, easing: 'ease-out-cubic' });
+
         document.addEventListener('DOMContentLoaded', () => {
-            const socialLinksContainer = document.getElementById('social-links-container');
-            const socialMediaPlatforms = [
+            const linksContainer = document.getElementById('links-container');
+            const socialPlatforms = [
                 { name: 'تيك توك', url: 'https://www.tiktok.com/@lara.hijab.jilbab', icon: 'fa-brands fa-tiktok' },
                 { name: 'انستغرام', url: 'https://www.instagram.com/lara.hijab.jilbab', icon: 'fa-brands fa-instagram' },
-                { name: 'فيسبوك', url: 'https://www.facebook.com/share/15DRYooPtrs/', icon: 'fa-brands fa-facebook-f' },
-                { name: 'موقعنا على الخريطة', url: 'https://maps.app.goo.gl/5QFSA5LxLXvRsvjSA', icon: 'fa-solid fa-location-dot' }
+                { name: 'فيسبوك', url: 'https://www.facebook.com/share/15DRYooPtrs/', icon: 'fa-brands fa-facebook' },
+                { name: 'موقعنا على الخريطة', url: 'https://maps.app.goo.gl/5QFSA5LxLXvRsvjSA', icon: 'fa-solid fa-map-location-dot' },
+                { name: 'اتصال مباشر', url: 'tel:0652386525', icon: 'fa-solid fa-phone-volume' }
             ];
 
-            socialMediaPlatforms.forEach(platform => {
-                const linkElement = document.createElement('a');
-                linkElement.href = platform.url;
-                linkElement.target = '_blank';
-                linkElement.className = 'social-link';
+            let animationDelay = 200;
+            socialPlatforms.forEach(platform => {
+                const card = document.createElement('a');
+                card.href = platform.url;
+                card.target = '_blank';
+                card.rel = 'noopener noreferrer';
+                card.className = 'link-card';
+                card.setAttribute('data-aos', 'fade-up');
+                card.setAttribute('data-aos-delay', animationDelay);
 
-                linkElement.innerHTML = `
-                    <i class="${platform.icon} social-link-icon"></i>
-                    <span class="social-link-name">${platform.name}</span>
-                    <i class="fa-solid fa-arrow-up-right-from-square social-link-arrow"></i>
+                // This structure is for the animated border to work correctly
+                card.innerHTML = `
+                    <div class="link-card-inner"></div>
+                    <div class="card-content">
+                        <i class="${platform.icon} card-icon"></i>
+                        <span class="card-text">${platform.name}</span>
+                        <i class="fa-solid fa-chevron-left card-arrow"></i>
+                    </div>
                 `;
-                socialLinksContainer.appendChild(linkElement);
+                
+                linksContainer.appendChild(card);
+                animationDelay += 100;
             });
         });
     </script>
